@@ -1,0 +1,39 @@
+$font-s : 12px
+$bg-header-context : '../images/bg.jpg'
+$bg_color-header-context : #3562C7
+$image_roof : '../images/roof_bright.png'
+$image_logo : '../images/logo.png'
+
+@mixin radial-gradient($from, $to)
+    $gradient : rgba(255,255,255,.1)
+    background: radial-gradient($to 15%, transparent 16%) 0 0,radial-gradient($to 15%, transparent 16%) 8px 8px,radial-gradient($gradient 15%, transparent 20%) 0 1px,radial-gradient($gradient 15%, transparent 20%) 8px 9px
+    background-color: $from
+    background-size: 16px 16px
+
+.header-top-fix
+    color: #fff
+    font-size: $font-s
+    position: fixed
+    z-index: 99999
+    height: 30px
+    width: 100%
+    border-bottom: 1px solid #CDCDCD
+    @include radial-gradient(#282828, black)
+
+.header-context
+    position: absolute
+    width: 100%
+    top: 29px
+    background: url($bg-header-context) $bg_color-header-context no-repeat
+.header-context .roof
+    position: relative
+    height: 15px
+    width: 100%
+    background: transparent url($image_roof) repeat-x 0 0
+
+.header-context .logo-main
+    background: url($image_logo) no-repeat
+    height: 60px
+    width: 162px
+    float: left
+    margin-left: 14px

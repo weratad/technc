@@ -1,0 +1,32 @@
+.header-top-fix {
+  color: #fff;
+  font-size: 12px;
+  position: fixed;
+  z-index: 99999;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid #CDCDCD;
+  background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px; }
+
+.header-context {
+  position: absolute;
+  width: 100%;
+  top: 29px;
+  background: url("../images/bg.jpg") #3562C7 no-repeat; }
+
+.header-context .roof {
+  position: relative;
+  height: 15px;
+  width: 100%;
+  background: transparent url("../images/roof_bright.png") repeat-x 0 0; }
+
+.header-context .logo-main {
+  background: url("../images/logo.png") no-repeat;
+  height: 60px;
+  width: 162px;
+  float: left;
+  margin-left: 14px; }
+
+/*# sourceMappingURL=style.css.map */

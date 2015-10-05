@@ -1,0 +1,5 @@
+%ul#users
+	- foreach($users as $user)
+		%li.user
+			Number: #{$user}
+			%a(href=$user) Home page
