@@ -1,22 +1,44 @@
+@import "font"
+
 $font-s : 12px
 $bg-header-context : '../images/bg.jpg'
 $bg_color-header-context : #3562C7
 $image_roof : '../images/roof_bright.png'
 $image_logo : '../images/logo.png'
-
+$aside-bg-color : #F1F9FC
+$aside-bg-border-right :  rgba(192, 192, 192, 0.5)
+$nav-bgcolor-active : #2980B9
+$nav-bgcolor-hover : #DCEFFE
+$nav-bor-bottom-coler : #ccc
+$aside-nav-bgcolor-active : #479BD7
+$aside-nav-bgcolor-active-rgb : rgb(71,155,215)
+$aside-nav-bgcolor-active-rgba : rgba(71,155,215, .7)
 @mixin radial-gradient($from, $to)
     $gradient : rgba(255,255,255,.1)
     background: radial-gradient($to 15%, transparent 16%) 0 0,radial-gradient($to 15%, transparent 16%) 8px 8px,radial-gradient($gradient 15%, transparent 20%) 0 1px,radial-gradient($gradient 15%, transparent 20%) 8px 9px
     background-color: $from
     background-size: 16px 16px
+@mixin aside-border()
+    -moz-box-shadow: inset -2px 0px 2px $aside-bg-border-right
+    -webkit-box-shadow: inset -2px 0px 2px $aside-bg-border-right
+    box-shadow: inset -2px 0px 2px $aside-bg-border-right
+
+body
+    font-family : sukhumvitlight
+    background-color: #FFF
+    font-size: 14px
+a
+    text-decoration: none
+a:hover
+    text-decoration: none
 
 .header-top-fix
-    color: #fff
-    font-size: $font-s
     position: fixed
-    z-index: 99999
     height: 30px
     width: 100%
+    z-index: 99999
+    color: #fff
+    font-size: $font-s
     border-bottom: 1px solid #CDCDCD
     @include radial-gradient(#282828, black)
 
@@ -25,15 +47,164 @@ $image_logo : '../images/logo.png'
     width: 100%
     top: 29px
     background: url($bg-header-context) $bg_color-header-context no-repeat
-.header-context .roof
-    position: relative
-    height: 15px
-    width: 100%
-    background: transparent url($image_roof) repeat-x 0 0
 
-.header-context .logo-main
-    background: url($image_logo) no-repeat
-    height: 60px
-    width: 162px
+    .roof
+        position: relative
+        height: 15px
+        width: 100%
+        background: transparent url($image_roof) repeat-x 0 0
+
+    .logo-main
+        background: url($image_logo) no-repeat
+        height: 60px
+        width: 162px
+        float: left
+        margin-left: 14px
+    .menumain
+        position: absolute
+        left: 178px
+        ul.nav
+            list-style-type: none
+            > li
+                width: 80px
+                height: 60px
+                background-color: #fff
+                margin-right: 1px
+                float: left
+                display: block
+                border-top-left-radius: 5px
+                border-top-right-radius: 5px
+                border: 1px solid rgba(192, 192, 192, 0.5)
+                a
+                    font-size: 14px
+                    font-weight: bold
+                    text-align: center
+                    padding: 5px 0px
+                    line-height: 25px
+                    :hover
+                        background-color: $nav-bgcolor-hover
+
+            > li.active
+                background-color: $nav-bgcolor-active
+                border-bottom: none
+                a
+                    color: #fff
+
+            > li:hover
+                a
+                    background-color: $nav-bgcolor-hover
+                    height: 59px
+                    border-top-left-radius: 5px
+                    border-top-right-radius: 5px
+            > li.active:hover
+                a
+                    background-color:  $nav-bgcolor-active
+
+
+
+
+aside
+    padding-top: 102px
+    width: 180px
+    height: 100%
+    border-top: 2px solid $nav-bgcolor-active
+    background-color: $aside-bg-color
     float: left
-    margin-left: 14px
+    @include aside-border()
+
+    nav
+        ul
+            font-family : Sukhumvitlight
+            font-size: 16px
+            font-weight: bold
+            list-style-type: none
+            padding: 0px
+            margin: 0px
+            li:first-child
+                border-top: 2px solid $nav-bgcolor-active
+            li
+                a
+                    height: 45px
+                    color: #000
+                    display: block
+                    white-space: nowrap
+                    padding: 10px 0px 5px 10px //top left bottom  right
+                    border-right: 1px solid #DCDCDC
+                    border-bottom: 1px solid #DCDCDC
+                    :hover
+                        background-color: $nav-bgcolor-hover
+                        @include aside-border()
+            li.active
+                a
+                    color: #fff
+                    background-color: $aside-nav-bgcolor-active
+                    border: none
+                    :hover
+                        color: #fff
+                        background-color: $aside-nav-bgcolor-active
+                        @include aside-border()
+                ul.dropdown-list
+                    position: relative
+                    display: block
+                    visibility: visible
+                    top: 0
+                    left: 0
+                    li > a
+                        color: #fff
+                        background: $aside-nav-bgcolor-active-rgb
+                        background: $aside-nav-bgcolor-active-rgba
+                        padding-left: 20px
+                        font-size: 15px
+                        border-bottom: 1px dashed #ccc 
+                        background-color: none
+                        opacity:none
+                        filter: none
+                    li:last-child >  a
+                        border-bottom: none
+
+
+
+            li.active::before
+                background-color: #fff
+                box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 )
+                content: "\00a0"
+                display: block
+                height: 20px
+                position: relative
+                float: right
+                margin-top: 10px
+                margin-right: -10px
+                transform: rotate( 45deg )
+                width:  20px
+            li.dropdown:hover
+                ul
+                    display: block
+                    visibility: visible
+            ul.dropdown-list
+                position: absolute
+                background: $nav-bgcolor-hover
+                border: none
+                border-radius: 0
+                border-bottom: 1px solid #c0c0c0
+                left: 100%
+                clear: both
+                top: -2px
+                visibility: hidden
+                zoom: 1px
+                z-index: 9
+                li
+                    width: 180px
+                    a
+                        font-size: 16px
+                        padding-left: 10px
+                        padding-top: 10px
+
+scetion
+    width: 100%
+    height: auto
+    position: absolute
+    top: 104px
+    border-top: 2px solid $nav-bgcolor-active
+
+
+

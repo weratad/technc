@@ -19,11 +19,57 @@
         %header
             %div{:class=>'header-top-fix'}
             %div{:class=>'header-context'}
-                //%div{:class=>'roof'}
+                %div{:class=>'roof'}
                 %div{:class=>'logo-main'}
-                Header
+                %div{:class=>'menumain'}
+                    %ul{:class=>'nav'}
+                        %li{:class=>'active'}
+                            %a(href='')
+                                %div
+                                    %img(src='http://localhost/advanced/backend/web/themes/basic/images/icon/box.png') 
+                                %span ข้อมูลทั่วไป
+                        %li
+                            %a(href='')
+                                %div
+                                    %img(src='http://localhost/advanced/backend/web/themes/basic/images/icon/box.png') 
+                                %span ข้อมูลทั่วไป
+                        %li
+                            %a(href='')
+                                %div
+                                    %img(src='http://localhost/advanced/backend/web/themes/basic/images/icon/box.png') 
+                                %span ข้อมูลทั่วไป
         %aside
-            %nav NAV
+            %nav
+                %ul
+                    %li{:class=>''}
+                        %a(href='')
+                            %img(src='http://localhost/appasia/admincp/themes/basic/images/icon/house.png')
+                            %span แจ้งความเสี่ยง
+                    %li{:class=>'dropdown active'}
+                        %a(href='')
+                            %img(src='http://localhost/appasia/admincp/themes/basic/images/icon/house.png')
+                            %span แจ้งความเสี่ยง
+                        %ul{:class=>'dropdown-list'}
+                            %li
+                                %a(href='')
+                                    %span สินค้าทั้งหมด
+                            %li
+                                %a(href='')
+                                    %span เพิ่มสินค้า
+                            %li
+                                %a(href='')
+                                    %span จัดการหมวดหมู่
+                    %li{:class=>'dropdown'}
+                        %a(href='')
+                            %img(src='http://localhost/appasia/admincp/themes/basic/images/icon/house.png')
+                            %span แจ้งความเสี่ยง
+                        %ul{:class=>'dropdown-list'}
+                            %li
+                                %a(href='')
+                                    %span สินค้าทั้งหมด
+                            %li
+                                %a(href='')
+                                    %span เพิ่มสินค้า
         %scetion
             %article
                 Article
