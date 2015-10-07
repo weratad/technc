@@ -27,6 +27,7 @@ body
     font-family : sukhumvitlight
     background-color: #FFF
     font-size: 14px
+    width: 100%
 a
     text-decoration: none
 a:hover
@@ -243,11 +244,36 @@ aside.resize-in
                         visibility: visible
 
 scetion
-    width: auto
+    font-family: 'THSarabunNew'
+    right: 0
+    left: 180px
     height: auto
     position: absolute
     top: 104px
     border-top: 2px solid $nav-bgcolor-active
+    article
+        .breadcrumb
+            height: 44px
+            padding: 2px
+            background-color: #fff
+            border-bottom: 1px dashed #ccc
+        .breadcrumb::before
+            content: url('../images/icons/arrow-right.png')
+            position: absolute
+            top: 5px
+            left: 10px
+        .breadcrumb-title
+            position: absolute
+            top: 8px
+            left: 55px
+            p
+                font-size: 15px
+                font-weight: bold
+                line-height: 10px
+            p.th
+                color: #BBB
+            p.en
+                color: #479BD7
 
 
 
