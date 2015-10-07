@@ -47,7 +47,7 @@ a:hover
     width: 100%
     top: 29px
     background: url($bg-header-context) $bg_color-header-context no-repeat
-
+    border-bottom: 2px solid $nav-bgcolor-active
     .roof
         position: relative
         height: 15px
@@ -104,10 +104,9 @@ a:hover
 
 
 aside
-    padding-top: 102px
+    margin-top: 102px
     width: 180px
     height: 100%
-    border-top: 2px solid $nav-bgcolor-active
     background-color: $aside-bg-color
     float: left
     @include aside-border()
@@ -164,7 +163,14 @@ aside
                         background-color: $aside-nav-bgcolor-active-rgb
                     li:last-child >  a
                         border-bottom: none
-
+            li.resize-in
+                background-color: $nav-bgcolor-active
+            li.resize-in
+                a:hover
+                    background-color: $nav-bgcolor-active
+                ul
+                    a:hover
+                        background-color: $nav-bgcolor-hover
 
 
             li.active::before
@@ -207,16 +213,37 @@ aside
             float: right
             padding: 2px
             background-color: #fff
-            color:  $aside-nav-bgcolor-active-rgba
+            color:  #666
             border: 1px solid #ccc
             border-radius: 5px
-            cursor: w-resize
+            cursor: pointer
             span
                 font-weight: bold
-                font-size: 14px
+                font-size: 13px
+
+aside.resize-in
+    width: 50px
+    nav
+        ul
+            li
+                a span
+                    visibility: hidden
+            li.dropdown.active
+                ul
+
+                ul > li
+                    a span
+                        visibility: visible
+            li.dropdown
+                a span
+                    visibility: hidden
+            li.dropdown:hover
+                ul > li
+                    a span
+                        visibility: visible
 
 scetion
-    width: 100%
+    width: auto
     height: auto
     position: absolute
     top: 104px
