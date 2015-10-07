@@ -208,6 +208,14 @@ aside
                     font-size: 16px
                     padding-left: 10px
                     padding-top: 10px
+                li.active
+                    background-color: $nav-bgcolor-active
+                    a:hover
+                        background-color: $nav-bgcolor-active
+                li.active::before
+                    content: none
+
+
         .resize
             margin-top: 5px
             margin-right: 5px

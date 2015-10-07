@@ -200,6 +200,12 @@ aside {
         font-size: 16px;
         padding-left: 10px;
         padding-top: 10px; }
+      aside nav ul ul.dropdown-list li.active {
+        background-color: #2980B9; }
+        aside nav ul ul.dropdown-list li.active a:hover {
+          background-color: #2980B9; }
+      aside nav ul ul.dropdown-list li.active::before {
+        content: none; }
   aside nav .resize {
     margin-top: 5px;
     margin-right: 5px;
