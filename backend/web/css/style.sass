@@ -131,9 +131,9 @@ aside
                     padding: 10px 0px 5px 10px //top left bottom  right
                     border-right: 1px solid #DCDCDC
                     border-bottom: 1px solid #DCDCDC
-                    :hover
-                        background-color: $nav-bgcolor-hover
-                        @include aside-border()
+                a:hover
+                    background-color: $nav-bgcolor-hover
+                    @include aside-border()
             li.active
                 a
                     color: #fff
@@ -160,6 +160,8 @@ aside
                         opacity:none
                         filter: none
                         @include aside-border()
+                    li > a:hover
+                        background-color: $aside-nav-bgcolor-active-rgb
                     li:last-child >  a
                         border-bottom: none
 
@@ -195,10 +197,23 @@ aside
                 z-index: 9
                 li
                     width: 180px
-                    a
-                        font-size: 16px
-                        padding-left: 10px
-                        padding-top: 10px
+                li a
+                    font-size: 16px
+                    padding-left: 10px
+                    padding-top: 10px
+        .resize
+            margin-top: 5px
+            margin-right: 5px
+            float: right
+            padding: 2px
+            background-color: #fff
+            color:  $aside-nav-bgcolor-active-rgba
+            border: 1px solid #ccc
+            border-radius: 5px
+            cursor: w-resize
+            span
+                font-weight: bold
+                font-size: 14px
 
 scetion
     width: 100%

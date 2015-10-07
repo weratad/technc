@@ -9,9 +9,9 @@ return [
             'renderers' => [
                 'haml' => [
                     'class' => 'mervick\mthaml\HamlViewRenderer',
-                ],
-                'twig' => [
-                    'class' => 'mervick\mthaml\TwigViewRenderer',
+                    'filters' => [
+                        'coffee' => 'CoffeeScript',
+                    ],
                 ],
             ],
         ],
