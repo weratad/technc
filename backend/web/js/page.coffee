@@ -1,16 +1,16 @@
 cookie = 'menuResize'
 navActive = '#479BD7'
 
-if $.cookie(cookie ) == 'true'
-	$('#menu-resize').html('< ย่อเมนู')
-	$('aside').removeClass('resize-in')
-	$('scetion').css('left', '180px')
-else
+if $.cookie(cookie) == 'false'
 	$('#menu-resize').html('ขยาย >')
 	$('aside').addClass('resize-in')
 	$('li.dropdown.active').addClass('resize-in')
 	$('li.dropdown.active').removeClass('active')
 	$('scetion').css('left', '50px')
+else
+	$('#menu-resize').html('< ย่อเมนู')
+	$('aside').removeClass('resize-in')
+	$('scetion').css('left', '180px')
 
 
 $('#menu-resize').on('click',  ->
