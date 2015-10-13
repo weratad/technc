@@ -9,7 +9,7 @@ use yii\grid\GridView;
 use app\models\TblProCat;
 use app\models\TblProDetail;
 use app\models\TblProductGrouplist;
-/*\jstreemaster\jstree\jstreeWidget::widget(['id'=>'tree']);*/
+\jstreemaster\jstree\jstreeWidget::widget(['id'=>'tree']);
 $this->title = 'My Yii Application';
 ?>
 <?php
@@ -27,20 +27,20 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
 <div class="col-md-5">
     <?= Html::input('text', '', '', ['id' => 'treesearch','class' => 'input-style','placeholder' => 'ค้นหา'])?>
     <div id="tree"></div>
-     <?= Html::button(Html::img(Url::base().'/themes/basic/images/icon/search.png').' ค้นหา',['class'=>'btn btn-default','onclick'=>'submitForm()']) ?>
+     <?= Html::button(Html::img(Url::base().'/images/icons/search.png').' ค้นหา',['class'=>'btn btn-default','onclick'=>'submitForm()']) ?>
 </div>
 <div class="col-md-7">
     <div id="box">
         <div class="box-top">จัดการแบ่งกลุ่ม</div>
         <div class="box-panel">
-         <?= Html::button(Html::img(Url::base().'/themes/basic/images/icon/add.png').' เพิ่มกลุ่ม',['id'=>'addgroup','class'=>'btn btn-default btn-sm','data-toggle'=>'modal','data-target'=>".loginModal"]) ?>
+         <?= Html::button(Html::img(Url::base().'/images/icons/add.png').' เพิ่มกลุ่ม',['id'=>'addgroup','class'=>'btn btn-default btn-sm','data-toggle'=>'modal','data-target'=>".loginModal"]) ?>
         <div>
         <?php foreach ($modelProductGroup as  $valueProductGroup) {
-                echo '<label>'.Html::img(Url::base().'/themes/basic/images/icon/icon-package-icon.png').' '.$valueProductGroup->pro_gro_name.' :</label>'
-                .' '.Html::a(Html::img(Url::base().'/themes/basic/images/icon/up-arrow-icon.png'),['/controller/action'], ['class'=>''])
-                .' '.Html::a(Html::img(Url::base().'/themes/basic/images/icon/down-arrow-icon.png'),['/controller/action'], ['class'=>''])
-                .' '.Html::a(Html::img(Url::base().'/themes/basic/images/icon/edit-icon.png'),['/controller/action'], ['class'=>''])
-                .' '.Html::a(Html::img(Url::base().'/themes/basic/images/icon/delete-icon.png'),['/controller/action'], ['class'=>''])
+                echo '<label>'.Html::img(Url::base().'/images/icons/icon-package-icon.png').' '.$valueProductGroup->pro_gro_name.' :</label>'
+                .' '.Html::a(Html::img(Url::base().'/images/icons/up-arrow-icon.png'),['/controller/action'], ['class'=>''])
+                .' '.Html::a(Html::img(Url::base().'/images/icons/down-arrow-icon.png'),['/controller/action'], ['class'=>''])
+                .' '.Html::a(Html::img(Url::base().'/images/icons/edit-icon.png'),['/controller/action'], ['class'=>''])
+                .' '.Html::a(Html::img(Url::base().'/images/icons/delete-icon.png'),['/controller/action'], ['class'=>''])
                 .'<br/>';
                 echo '<ul  class="sortableGroup connectedSortable">';
                 $dataTblProductGrouplist = TblProductGrouplist::find()->where(['pro_gro_id' => $valueProductGroup->pro_gro_id])->all();
@@ -50,7 +50,7 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
                 echo '</ul>';
         }?>
         <?php if(!empty($modelProductGroupEpmty)){
-            echo '<label>'.Html::img(Url::base().'/themes/basic/images/icon/icon-package-icon.png').' ไม่ระบุกลุ่ม :</label><br/>';
+            echo '<label>'.Html::img(Url::base().'/images/icons/icon-package-icon.png').' ไม่ระบุกลุ่ม :</label><br/>';
             echo '<ul  class="sortableGroup connectedSortable">';
             foreach ($modelProductGroupEpmty as  $valueProductGroupEpmty) {
                 echo '<li class="ui-state-default">'.$valueProductGroupEpmty['pro_de_name'].'</li>';
@@ -64,7 +64,7 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
                 }*/
             ?>
         
-<?= Html::button( Html::img(Url::base().'/themes/basic/images/icon/disk.png').' บันทึก',['id'=>'sumbitsort','class'=>'btn btn-primary']) ?>   
+<?= Html::button( Html::img(Url::base().'/images/icons/disk.png').' บันทึก',['id'=>'sumbitsort','class'=>'btn btn-primary']) ?>   
        </div>
    </div>
 
@@ -96,8 +96,8 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
          <lable>ชื่อกลุ่ม</lable> : <?= Html::input('text', 'TblProductGroup[pro_gro_name]', '', ['id' => 'treesearch','class' => 'input-style','placeholder' => 'กรอกข้อมูล'])?>
       </div>
       <div class="modal-footer">
-        <?= Html::submitButton(Html::img(Url::base().'/themes/basic/images/icon/disk.png').' บันทึก', ['class' => 'btn btn-primary']) ?>
-        <?= Html::button( Html::img(Url::base().'/themes/basic/images/icon/error.png').' ยกเลิก',['class'=>'btn btn-default','data-dismiss'=> 'modal']) ?>   
+        <?= Html::submitButton(Html::img(Url::base().'/images/icons/disk.png').' บันทึก', ['class' => 'btn btn-primary']) ?>
+        <?= Html::button( Html::img(Url::base().'/images/icons/error.png').' ยกเลิก',['class'=>'btn btn-default','data-dismiss'=> 'modal']) ?>   
               
       </div>
     </div>
@@ -131,7 +131,7 @@ $this->registerJs(' $("#'.$treeid.'")
     .jstree({
         "core" : {
             "data" : {
-                "url" : "'.Url::to('@web/product/add', true).'?operation=get_nodeseatch",
+                "url" : "'.Url::toRoute('product/catalog',true).'&operation=get_nodeseatch",
                 "data" : function (node) {
                     return { "id" : 1,"open" : true, "dataseatch" : "'.(empty($cksearch['pro_cat']) ? ' ':$cksearch['pro_cat']).'" };
                 }
@@ -157,24 +157,24 @@ $this->registerJs(' $("#'.$treeid.'")
                 var tmp = $.jstree.defaults.contextmenu.items();
                 delete tmp.create.action;
                 tmp.create.label = "สร้าง";
-                tmp.create.icon = "'.Url::base().'/themes/basic/images/icon/application_add.png";
+                tmp.create.icon = "'.Url::base().'/images/icons/application_add.png";
                 tmp.rename.label = "เปลี่ยนชื่อ";
-                tmp.rename.icon = "'.Url::base().'/themes/basic/images/icon/application_edit.png";
+                tmp.rename.icon = "'.Url::base().'/images/icons/application_edit.png";
                 tmp.remove.label = "ลบ";
-                tmp.remove.icon = "'.Url::base().'/themes/basic/images/icon/application_delete.png";
+                tmp.remove.icon = "'.Url::base().'/images/icons/application_delete.png";
                 tmp.ccp.label = "เครื่องมือ";
-                tmp.ccp.icon = "'.Url::base().'/themes/basic/images/icon/cog.png";
+                tmp.ccp.icon = "'.Url::base().'/images/icons/cog.png";
                 tmp.ccp.submenu.cut.label = "ตัด";
-                tmp.ccp.submenu.cut.icon = "'.Url::base().'/themes/basic/images/icon/cut.png";
+                tmp.ccp.submenu.cut.icon = "'.Url::base().'/images/icons/cut.png";
                 tmp.ccp.submenu.copy.label = "คัดลอก";
-                tmp.ccp.submenu.copy.icon = "'.Url::base().'/themes/basic/images/icon/page_white_copy.png";
+                tmp.ccp.submenu.copy.icon = "'.Url::base().'/images/icons/page_white_copy.png";
                 tmp.ccp.submenu.paste.label = "วาง";
-                tmp.ccp.submenu.paste.icon = "'.Url::base().'/themes/basic/images/icon/page_paste.png";
+                tmp.ccp.submenu.paste.icon = "'.Url::base().'/images/icons/page_paste.png";
                 tmp.create.submenu = {
                     "create_folder" : {
                         "separator_after"   : true,
                         "label"             : "หมวดหมู่",
-                        "icon"              : "'.Url::base().'/themes/basic/images/icon/folder.png",
+                        "icon"              : "'.Url::base().'/images/icons/folder.png",
                         "action"            : function (data) {
                             var inst = $.jstree.reference(data.reference),
                             obj = inst.get_node(data.reference);
@@ -188,7 +188,7 @@ return tmp;
 }
 },
 "types" : {
- "default" : { "icon" : "'.Url::base().'/themes/basic/images/icon/folder.png" }, 
+ "default" : { "icon" : "'.Url::base().'/images/icons/folder.png" }, 
 },
 "checkbox":{
     "three_state" : false,
@@ -196,14 +196,14 @@ return tmp;
 "plugins" : ["dnd","wholerow","search","contextmenu" ,"checkbox","types"]
 })
 .on("delete_node.jstree", function (e, data) {
-    $.get("'.Url::to('').'?operation=delete_node", { "id" : data.node.id })
+    $.get("'.Url::to('').'&operation=delete_node", { "id" : data.node.id })
     .fail(function () {
         data.instance.refresh();
     });
 })
 .on("create_node.jstree", function (e, data) {
                         //console.log(data.node.type);
-    $.get("'.Url::to('').'?operation=create_node", { "type" : data.node.type, "id" : data.node.parent, "text" : data.node.text })
+    $.get("'.Url::to('').'&operation=create_node", { "type" : data.node.type, "id" : data.node.parent, "text" : data.node.text })
     .done(function (d) {
         data.instance.set_id(data.node, d.id);
     })
@@ -212,7 +212,7 @@ return tmp;
 });
 })
 .on("rename_node.jstree", function (e, data) {
-    $.get("'.Url::to('').'?operation=rename_node", { "id" : data.node.id, "text" : data.text })
+    $.get("'.Url::to('').'&operation=rename_node", { "id" : data.node.id, "text" : data.text })
     .done(function (d) {
         data.instance.set_id(data.node, d.id);
     })
@@ -221,7 +221,7 @@ return tmp;
 });
 })
 .on("move_node.jstree", function (e, data) {
-    $.get("'.Url::to('').'?operation=move_node", { "id" : data.node.id, "parent" : data.parent })
+    $.get("'.Url::to('').'&operation=move_node", { "id" : data.node.id, "parent" : data.parent })
     .done(function (d) {
                             //data.instance.load_node(data.parent);
         data.instance.refresh();
@@ -231,7 +231,7 @@ return tmp;
 });
 })
 .on("copy_node.jstree", function (e, data) {
-    $.get("'.Url::to('').'?operation=copy_node", { "id" : data.original.id, "parent" : data.parent })
+    $.get("'.Url::to('').'&operation=copy_node", { "id" : data.original.id, "parent" : data.parent })
     .done(function (d) {
                             //data.instance.load_node(data.parent);
         data.instance.refresh();
@@ -256,8 +256,8 @@ $("#'.$treeid.'search").keyup(function () {
 
 });
 
-$("#'.$treeid.'").on("select_node.jstree", function (e, data) {  
-   // var url = "'.Url::to('@web/product/catalog', true).'?TblProDetailSearch%5Bpro_cat%5D="+data.node.id;
+$("#'.$treeid.'").on("select_node.jstree", function (e, data) {
+   // var url = "'.Url::to('product/catalog').'"+data.node.id;
             // window.location.href = url;
     console.log(e);
 });

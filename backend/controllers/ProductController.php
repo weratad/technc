@@ -35,11 +35,11 @@ class ProductController extends \yii\web\Controller
                                     ->groupBy(['tbl_product.product_id'])
                                     ->createCommand()
                                     ->queryAll();
-        if(!empty(Yii::$app->request->post('TblProductGroup'))){
-             $model = new TblProductGroup;
+       	if(Yii::$app->request->post('TblProductGroup')){
+            $model = new TblProductGroup;
              $valueDB = Yii::$app->request->post();
              $valueDB['TblProductGroup']['id'] = $palam['pro_cat'];
-             $model->load($valueDB); 
+             $model->load($valueDB);
              $model->save();
              return $this->redirect( "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",302);
         }
