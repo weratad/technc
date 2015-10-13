@@ -231,7 +231,7 @@ aside.resize-in {
   aside.resize-in nav ul li.dropdown:hover ul > li a span {
     visibility: visible; }
 
-scetion {
+section {
   font-family: "THSarabunNew";
   right: 0;
   left: 180px;
@@ -239,27 +239,88 @@ scetion {
   position: absolute;
   top: 104px;
   border-top: 2px solid #2980B9; }
-  scetion article .breadcrumb {
+  section article .breadcrumb {
     height: 44px;
     padding: 2px;
     background-color: #fff;
     border-bottom: 1px dashed #ccc; }
-  scetion article .breadcrumb::before {
+  section article .breadcrumb::before {
     content: url("../images/icons/arrow-right.png");
     position: absolute;
     top: 5px;
     left: 10px; }
-  scetion article .breadcrumb-title {
+  section article .breadcrumb-title {
     position: absolute;
     top: 8px;
     left: 55px; }
-    scetion article .breadcrumb-title p {
+    section article .breadcrumb-title p {
       font-size: 15px;
       font-weight: bold;
       line-height: 10px; }
-    scetion article .breadcrumb-title p.th {
+    section article .breadcrumb-title p.th {
       color: #BBB; }
-    scetion article .breadcrumb-title p.en {
+    section article .breadcrumb-title p.en {
       color: #479BD7; }
+
+.grid-view table.items {
+  background: white;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px #D0E3EF solid; }
+  .grid-view table.items thead tr th {
+    color: white;
+    background: url("../images/bg.gif") repeat-x scroll left top white;
+    text-align: center;
+    border: 1px white solid;
+    padding: 5px; }
+    .grid-view table.items thead tr th a {
+      color: white; }
+    .grid-view table.items thead tr th a:hover {
+      color: #FFF; }
+    .grid-view table.items thead tr th a.asc {
+      background: url("../images/up.gif") right center no-repeat;
+      padding-right: 15px; }
+    .grid-view table.items thead tr th a.desc {
+      background: url("../images/down.gif") right center no-repeat;
+      padding-right: 15px; }
+    .grid-view table.items thead tr th a.desc:after, .grid-view table.items thead tr th a.asc:after {
+      content: none; }
+  .grid-view table.items tbody tr td {
+    font-size: 1em;
+    border: 1px white solid;
+    padding: 0.3em; }
+  .grid-view table.items tbody tr:hover > td {
+    background: #ECFBD4;
+    cursor: pointer; }
+  .grid-view table.items tbody tr:nth-child(even) {
+    background: #F8F8F8; }
+  .grid-view table.items tbody tr:nth-child(odd) {
+    background: #E5F1F4; }
+  .grid-view table.items tbody tr.selected {
+    background: #BCE774; }
+  .grid-view table.items tbody tr:hover.selected {
+    background: #CCFF66; }
+  .grid-view table.items tbody tr.upcol {
+    background: #BCE774; }
+.grid-view .link-column img {
+  border: 0; }
+.grid-view .button-column {
+  text-align: center;
+  width: 60px; }
+.grid-view .button-column img {
+  border: 0; }
+.grid-view .checkbox-column {
+  width: 15px; }
+.grid-view .summary {
+  margin: 0 0 5px 0;
+  text-align: right; }
+.grid-view .pager {
+  margin: 5px 0 0 0;
+  text-align: right; }
+.grid-view .empty {
+  font-style: italic; }
+.grid-view .filters input, .grid-view .filters select {
+  width: 100%;
+  border: 1px solid #ccc; }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,6 +5,7 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -24,51 +25,91 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
-        ];
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+    <header>
+        <div class="header-top-fix">
+         </div><!--.header-top-fix-->
+            <div class="header-context">
+                <div class="roof"></div><!--.roof-->
+                <div class="logo-main"></div><!--.logo-main-->
+                <div class="menumain">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="">
+                                <div><?=Html::img(Url::base().'/images/icons/box.png')?></div>
+                                <span>ข้อมูลทั่วไป</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div><?=Html::img(Url::base().'/images/icons/box.png')?></div>
+                                <span>ข้อมูลทั่วไป</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--.menumain-->
+            </div><!--.header-context-->
+    </header>
+    <aside>
+        <nav>
+            <ul>
+                <li>
+                    <a href="">
+                        <?=Html::img(Url::base().'/images/icons/house.png')?>
+                        <span>แจ้งความเสี่ยง</span>
+                    </a>
+                </li>
+                <li class="dropdown active">
+                    <a href="">
+                        <?=Html::img(Url::base().'/images/icons/house.png')?>
+                        <span>แจ้งความเสี่ยง</span>
+                    </a>
+                    <ul class="dropdown-list">
+                        <li>
+                            <a href="">
+                                <span>สินค้าทั้งหมด</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="">
+                                <span>เพิ่มสินค้า</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                      <li class="dropdown">
+                    <a href="">
+                        <?=Html::img(Url::base().'/images/icons/house.png')?>
+                        <span>แจ้งความเสี่ยง</span>
+                    </a>
+                    <ul class="dropdown-list">
+                        <li>
+                            <a href="">
+                                <span>สินค้าทั้งหมด</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>เพิ่มสินค้า</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <section>
+        <article>
+            <div class="breadcrumb">
+                <div class="breadcrumb-title">
+                    <p class="en">PRODUCTS</p>
+                    <p class="th">จัดการสินค้า</p>
+                </div>
+            </div>
+            <div class="content">
+                <?=$content?>
+            </div>
+        </article>
+    </section>
 
 <?php $this->endBody() ?>
 </body>

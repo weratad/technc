@@ -251,7 +251,7 @@ aside.resize-in
                     a span
                         visibility: visible
 
-scetion
+section
     font-family: 'THSarabunNew'
     right: 0
     left: 180px
@@ -282,6 +282,78 @@ scetion
                 color: #BBB
             p.en
                 color: #479BD7
+
+
+.grid-view
+    table.items
+        background: white
+        border-collapse: collapse
+        width: 100%
+        border: 1px #D0E3EF solid
+        thead
+            tr
+                th
+                    color: white
+                    background: url("../images/bg.gif") repeat-x scroll left top white
+                    text-align: center
+                    border: 1px white solid
+                    padding: 5px
+                    a
+                        color: white
+                    a:hover
+                        color: #FFF
+                    a.asc
+                        background: url("../images/up.gif") right center no-repeat
+                        padding-right: 15px
+                    a.desc
+                        background: url("../images/down.gif") right center no-repeat
+                        padding-right: 15px
+                    a.desc:after,a.asc:after
+                        content: none
+        tbody
+            tr
+                td
+                    font-size: 1.0em
+                    border: 1px white solid
+                    padding: 0.3em
+            tr:hover > td
+                background: #ECFBD4
+                cursor: pointer
+            tr:nth-child(even)
+                background: #F8F8F8
+            tr:nth-child(odd)
+                background: #E5F1F4
+            tr.selected
+                background: #BCE774
+            tr:hover.selected
+                background: #CCFF66
+            tr.upcol
+                background: #BCE774
+    .link-column img
+        border: 0
+    .button-column
+        text-align: center
+        width: 60px
+    .button-column img
+        border: 0
+    .checkbox-column
+        width: 15px
+    .summary
+        margin: 0 0 5px 0
+        text-align: right
+    .pager
+        margin: 5px 0 0 0
+        text-align: right
+    .empty
+        font-style: italic
+    .filters input,.filters select
+        width: 100%
+        border: 1px solid #ccc
+
+
+
+
+
 
 
 
