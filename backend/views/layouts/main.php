@@ -74,6 +74,11 @@ AppAsset::register($this);
                                 <span>เพิ่มสินค้า</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?=Url::to(['catalog'])?>">
+                                <span>แบ่งหมวดหมู่</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                       <li class="dropdown">
@@ -95,6 +100,9 @@ AppAsset::register($this);
                     </ul>
                 </li>
             </ul>
+            <div id="menu-resize" class="resize">
+                    <span>< ย่อเมนู</span>
+                </div>
         </nav>
     </aside>
     <section>

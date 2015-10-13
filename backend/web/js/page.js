@@ -10,11 +10,11 @@
     $('aside').addClass('resize-in');
     $('li.dropdown.active').addClass('resize-in');
     $('li.dropdown.active').removeClass('active');
-    $('scetion').css('left', '50px');
+    $('section').css('left', '50px');
   } else {
     $('#menu-resize').html('< ย่อเมนู');
     $('aside').removeClass('resize-in');
-    $('scetion').css('left', '180px');
+    $('section').css('left', '180px');
   }
 
   $('#menu-resize').on('click', function() {
@@ -24,14 +24,14 @@
       $('aside').removeClass('resize-in');
       $('li.dropdown.resize-in').addClass('active');
       $('li.dropdown.resize-in').removeClass('resize-in');
-      $('scetion').css('left', '180px');
+      $('section').css('left', '180px');
     } else {
       $.cookie(cookie, false);
       $(this).html('ขยาย >');
       $('aside').addClass('resize-in');
       $('li.dropdown.active').addClass('resize-in');
       $('li.dropdown.active').removeClass('active');
-      $('scetion').css('left', '50px');
+      $('section').css('left', '50px');
     }
   });
 
