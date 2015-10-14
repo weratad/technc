@@ -23,56 +23,89 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+    <?php $this->beginBody() ?>
+    <header>
+        <div class="hd-top">
+            <div class="container">
+                <span>
+                    <a href="">Link</a>
+                    <a href="">Link</a>
+                    <a href="">Link</a>
+                    <a href="">Link</a>
+                </span>
+            </div><!--.container-->
+        </div><!--.hd-top-->
+        <div class="hd-cont container">
+            <div class="hd-cont-logo">
+                <dl class="logo">
+                    <dt>
+                        <a href=""><img src="http://2800.10yanw.com/templets/default/images/logo12.png"></a>
+                    </dt>
+                    <dd>
+                        <p>十年的魅力演绎</p>
+                        <h2>健康环保办公家具第一品牌</h2>
+                    </dd>
+                </dl>
+            </div>
+            <dl class="phone">
+                <dt>全国服务热线</dt>
+                <dd>400-900-8899</dd>
+            </dl>
+        </div><!--.hd-cont-->
+        <div class="hd-nav">
+            <ul class="container">
+                <li>
+                    <a href="/">公司首页</a>
+                </li>
+            </ul>
+        </div><!--.hd-nav-->
+    </header>
+    <div class="banner">
+        <div id="carousel-generic" class="carousel slide carousel-fade" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-generic" data-slide-to="2"></li>
+        </ol>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
-        ];
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+              <img src="http://2800.10yanw.com/templets/default/images/banner.jpg" alt="...">
+              <div class="carousel-caption">
+              </div>
+          </div>
+          <div class="item">
+              <img src="http://2800.10yanw.com/templets/default/images/banner1.jpg" alt="...">
+              <div class="carousel-caption">
+              </div>
+          </div>
+          <div class="item">
+              <img src="http://2800.10yanw.com/templets/default/images/banner.jpg" alt="...">
+              <div class="carousel-caption">
+              </div>
+          </div>
+      </div><!--#carousel-generic-->
+  </div> <!-- Carousel -->
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+</div><!--.banner-->
+<div class="bgspan">
+    <div></div>
+</div>
+<div class="search-home">
+    <div class="search container">
+        <span class="keyword">
+            <span>热门搜索：</span>
+            <em>
+                <a href="/">办公家具</a>
+            </em>
+        </span>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
+<div class="pattern">
+    555+
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>
