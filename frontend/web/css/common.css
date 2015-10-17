@@ -138,5 +138,138 @@ header {
 
 .pattern {
   padding: 20px 0px 30px 0px; }
+  .pattern #flexisel {
+    display: none; }
+  .pattern .nbs-flexisel-container {
+    margin-top: 20px;
+    position: relative;
+    max-width: 100%; }
+  .pattern .nbs-flexisel-ul {
+    position: relative;
+    width: 99999px;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center; }
+  .pattern .nbs-flexisel-inner {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px; }
+  .pattern .nbs-flexisel-item {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    position: relative;
+    line-height: 0px; }
+  .pattern .nbs-flexisel-item img {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-height: 80px; }
+  .pattern .nbs-flexisel-nav-left,
+  .pattern .nbs-flexisel-nav-right {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.5; }
+  .pattern .nbs-flexisel-nav-left {
+    left: 10px;
+    background: url(../images/button-previous.png) no-repeat; }
+  .pattern .nbs-flexisel-nav-right {
+    right: 5px;
+    background: url(../images/button-next.png) no-repeat; }
+
+.product-intro .mainTitle {
+  height: 40px; }
+  .product-intro .mainTitle h4 {
+    float: left;
+    font-size: 22px;
+    height: 40px;
+    line-height: 40px; }
+    .product-intro .mainTitle h4 span {
+      width: 29px;
+      height: 34px;
+      display: block;
+      background: url(../images/mainTitle.png) no-repeat;
+      float: left;
+      margin: 2px 0 0 0;
+      display: inline; }
+    .product-intro .mainTitle h4 strong {
+      float: left;
+      padding: 0 5px 0 8px;
+      font-weight: normal; }
+      .product-intro .mainTitle h4 strong a {
+        color: #cc3300; }
+  .product-intro .mainTitle .titleMenu {
+    float: right;
+    text-align: right;
+    height: 38px;
+    line-height: 38px;
+    padding-top: 2px; }
+    .product-intro .mainTitle .titleMenu a {
+      color: #666666; }
+    .product-intro .mainTitle .titleMenu span {
+      color: #cccccc;
+      padding: 0 8px 0 10px; }
+.product-intro .floor_bd {
+  clear: both; }
+  .product-intro .floor_bd .indexLeft {
+    width: 200px;
+    border-bottom: 1px solid #dddddd;
+    border-top: 2px solid #cc3300; }
+    .product-intro .floor_bd .indexLeft .indexLeftYY {
+      background: url(../images/indexLeft.png) repeat-y;
+      width: 10px;
+      height: 314px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 10; }
+    .product-intro .floor_bd .indexLeft p {
+      width: 200px;
+      height: 276px;
+      overflow: hidden;
+      border-left: 1px solid #dddddd; }
+      .product-intro .floor_bd .indexLeft p img {
+        width: 198px;
+        height: 276px; }
+    .product-intro .floor_bd .indexLeft ul {
+      clear: both;
+      height: 272px;
+      overflow: hidden;
+      list-style-type: none; }
+      .product-intro .floor_bd .indexLeft ul li {
+        width: 98px;
+        height: 68px;
+        float: left;
+        border-left: 1px solid #dddddd;
+        border-bottom: 1px solid #F1F1F1;
+        text-align: center; }
+  .product-intro .floor_bd .indexRight {
+    clear: both;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    border-top: 2px solid #DDDDDD;
+    height: 548px;
+    overflow: hidden; }
+    .product-intro .floor_bd .indexRight ul {
+      height: 548px;
+      overflow: hidden;
+      float: left; }
+      .product-intro .floor_bd .indexRight ul li {
+        height: 274px;
+        float: left;
+        border-left: 1px solid #F1F1F1;
+        border-bottom: 1px solid #F1F1F1;
+        position: relative; }
 
 /*# sourceMappingURL=common.css.map */
