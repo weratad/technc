@@ -23,10 +23,11 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/jquery/jquery.cookie.js',
-        'js/page.coffee'
+        'js/page.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'backend\assets\AngularAsset',
     ];
 }

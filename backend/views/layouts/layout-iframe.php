@@ -1,13 +1,8 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-
-
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -20,9 +15,9 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body ng-app="myApp-iframe">
 <?php $this->beginBody() ?>
-    <?=$content?>
+	<?=$content?>
 <?php $this->endBody() ?>
 </body>
 </html>

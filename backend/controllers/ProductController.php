@@ -14,6 +14,7 @@ class ProductController extends \yii\web\Controller
         $searchModel = new TblProDetailSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize=10;
+        $this->layout = 'layout-iframe';
         return $this->render('index',[
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

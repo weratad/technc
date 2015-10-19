@@ -9,12 +9,14 @@ use yii\grid\GridView;
 use app\models\TblProCat;
 use app\models\TblProDetail;
 use app\models\TblProductGrouplist;
+$this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/catalog.js',  ['depends' => ['yii\web\YiiAsset','backend\assets\AngularAsset']]);
 \jstreemaster\jstree\jstreeWidget::widget(['id'=>'tree']);
 $this->title = 'My Yii Application';
 ?>
 <?php
 $cksearch= Yii::$app->request->get('TblProDetailSearch');
 ?>
+
 <style type="text/css">
     .items .block, .content .block {
     height: 10px!important;
@@ -29,7 +31,7 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
     <div id="tree"></div>
      <?= Html::button(Html::img(Url::base().'/images/icons/search.png').' ค้นหา',['class'=>'btn btn-default','onclick'=>'submitForm()']) ?>
 </div>
-<div class="col-md-7">
+<div class="col-md-7" ng-controller="ParentController">
     <div id="box">
         <div class="box-top">จัดการแบ่งกลุ่ม</div>
         <div class="box-panel">
@@ -63,7 +65,12 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
                     echo '<li id="item-'.$valueProCat->procat_id.'" class="ui-state-default" data-key="'.$valueProCat->procat_id.'">Item '.$valueProCat->prodata->nm.'</li>';
                 }*/
             ?>
-        
+        <iframe src="http://localhost/technc/backend/web/index.php?r=demo" frameBorder="0" width="700" height="350"></iframe>
+        <p><button ng-click="message()">Send message to iframe</button></p>
+    <p>Messages from iframe</p>
+    <ul>
+      <li ng-repeat="message in messages track by $index">{{message}}</li>
+    </ul>
 <?= Html::button( Html::img(Url::base().'/images/icons/disk.png').' บันทึก',['id'=>'sumbitsort','class'=>'btn btn-primary']) ?>   
        </div>
    </div>
