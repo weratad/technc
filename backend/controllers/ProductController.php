@@ -6,6 +6,8 @@ use yii\db\Query;
 use app\models\TblProDetail;
 use app\models\TblProDetailSearch;
 use app\models\TblProductGroup;
+use app\models\TblSeries;
+use app\models\TblSeriesSearch;
 class ProductController extends \yii\web\Controller
 {
     public function actionIndex()
@@ -13,7 +15,7 @@ class ProductController extends \yii\web\Controller
         $model = new TblProDetail();
         $searchModel = new TblProDetailSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize=10;
+        $dataProvider->pagination->pageSize=5;
         $this->layout = 'layout-iframe';
         return $this->render('index',[
             'searchModel' => $searchModel,
@@ -49,6 +51,17 @@ class ProductController extends \yii\web\Controller
             'modelProductGroup' => $modelProductGroup,
             'modelProductGroupEpmty' => $modelProductGroupEpmty
             ]);
+    }
+    public function actionSerie($id=null){
+        $model = new TblSeries();
+        $searchModel = new TblSeriesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $this->layout = 'layout-iframe';
+        return $this->render('serie',[
+            'id' => $id,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
 }

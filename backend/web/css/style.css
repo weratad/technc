@@ -27,7 +27,8 @@ body {
   font-family: sukhumvitlight;
   background-color: #FFF;
   font-size: 14px;
-  width: 100%; }
+  width: 100%;
+  position: fixed; }
 
 a {
   text-decoration: none; }

@@ -24,10 +24,11 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/jquery/jquery.cookie.js',
         'js/page.js',
+        'js/plugin/center-loader.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'backend\assets\AngularAsset',
+        //'backend\assets\AngularAsset',
     ];
 }

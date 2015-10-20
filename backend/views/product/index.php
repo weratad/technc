@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 ?>
 <div class="col-lg-8">
 	<?php
-		Pjax::begin(['id'=>'gridproduct','enablePushState'=>false,'enableReplaceState' => false]);
+		//Pjax::begin(['id'=>'gridproduct','enablePushState'=>false,'enableReplaceState' => false]);
 		echo GridView::widget([
 			'dataProvider' => $dataProvider,
 			'filterModel' => $searchModel,
@@ -68,5 +68,5 @@ use yii\widgets\Pjax;
 					['class' => 'yii\grid\ActionColumn'],
 				],
 			]);
-			Pjax::end();
+			//Pjax::end();
 ?>

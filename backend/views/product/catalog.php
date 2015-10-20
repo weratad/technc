@@ -29,14 +29,14 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
 <div class="col-md-5">
     <?= Html::input('text', '', '', ['id' => 'treesearch','class' => 'input-style','placeholder' => 'ค้นหา'])?>
     <div id="tree"></div>
-     <?= Html::button(Html::img(Url::base().'/images/icons/search.png').' ค้นหา',['class'=>'btn btn-default','onclick'=>'submitForm()']) ?>
+     <?= Html::button(Html::img(Url::base().'/images/icons/search.png').' ค้นหา',['id'=>'submitForm','class'=>'btn btn-default']) ?>
 </div>
 <div class="col-md-7" ng-controller="ParentController">
     <div id="box">
         <div class="box-top">จัดการแบ่งกลุ่ม</div>
-        <div class="box-panel">
+        <!--<div class="box-panel">
          <?= Html::button(Html::img(Url::base().'/images/icons/add.png').' เพิ่มกลุ่ม',['id'=>'addgroup','class'=>'btn btn-default btn-sm','data-toggle'=>'modal','data-target'=>".loginModal"]) ?>
-        <div>
+        <div>-->
         <?php foreach ($modelProductGroup as  $valueProductGroup) {
                 echo '<label>'.Html::img(Url::base().'/images/icons/icon-package-icon.png').' '.$valueProductGroup->pro_gro_name.' :</label>'
                 .' '.Html::a(Html::img(Url::base().'/images/icons/up-arrow-icon.png'),['/controller/action'], ['class'=>''])
@@ -65,7 +65,9 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
                     echo '<li id="item-'.$valueProCat->procat_id.'" class="ui-state-default" data-key="'.$valueProCat->procat_id.'">Item '.$valueProCat->prodata->nm.'</li>';
                 }*/
             ?>
-        <iframe src="http://localhost/technc/backend/web/index.php?r=demo" frameBorder="0" width="700" height="350"></iframe>
+        <div id="iframe-set" style="width:720px;">
+            <iframe id="iframe-serie" src="<?=Url::to(['serie'])?>" frameBorder="0" width="700"></iframe>
+        </div><!--iframe-set-->
         <p><button ng-click="message()">Send message to iframe</button></p>
     <p>Messages from iframe</p>
     <ul>
@@ -91,7 +93,7 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
         'options' => ['role' => 'form'],
         'enableAjaxValidation' => true,
         'action' => ['product/catalog?TblProDetailSearch%5Bpro_cat%5D='.$ProCat]
-    ]); ?>  
+    ]); ?>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
@@ -99,13 +101,12 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
         </button>
         <h4 class="modal-title" id="loginLabel">เพิ่มกลุ่ม</h4>
       </div>
-      <div class="modal-body">    
+      <div class="modal-body">
          <lable>ชื่อกลุ่ม</lable> : <?= Html::input('text', 'TblProductGroup[pro_gro_name]', '', ['id' => 'treesearch','class' => 'input-style','placeholder' => 'กรอกข้อมูล'])?>
       </div>
       <div class="modal-footer">
         <?= Html::submitButton(Html::img(Url::base().'/images/icons/disk.png').' บันทึก', ['class' => 'btn btn-primary']) ?>
-        <?= Html::button( Html::img(Url::base().'/images/icons/error.png').' ยกเลิก',['class'=>'btn btn-default','data-dismiss'=> 'modal']) ?>   
-              
+        <?= Html::button( Html::img(Url::base().'/images/icons/error.png').' ยกเลิก',['class'=>'btn btn-default','data-dismiss'=> 'modal']) ?>
       </div>
     </div>
     <?php ActiveForm::end(); ?>
@@ -119,8 +120,10 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
 </style>
  <script type="text/javascript">
         function submitForm() {
-            var url = "<?=Url::to('@web/product/catalog', true)?>?TblProDetailSearch%5Bpro_cat%5D="+$('#tree').jstree('get_checked',null,true);
-             window.location.href = url;
+           // var url = "<?=Url::to('@web/product/catalog', true)?>?TblProDetailSearch%5Bpro_cat%5D="+$('#tree').jstree('get_checked',null,true);
+             console.log($('#tree').jstree("get_selected"));
+             document.getElementById('iframe-serie').src = "<?=Url::to(['serie'])?>"+'&id='+$('#tree').jstree('get_checked',null,true);
+             //window.location.href = url;
     return false;
             /*alert(tinyMCE.activeEditor.getContent().replace(/<[^>]+>/g, '').length);
             var checked_ids = [];
