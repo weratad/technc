@@ -9,15 +9,15 @@
     };
   });*/
 //url
-var url = 'http://localhost/technc/backend/web/index.php?r=product%2F';
+var url = 'http://iexten.com';
 // Jquery
 $( document ).ready(function() {
     //console.log($( '.grid-view' ).height());
     $('#iframe-serie').load(function(){
         $(this).show();
         console.log('laod the iframe');
-        console.log($('iframe').contents().find(".grid-view").height());
-        $("#iframe-serie").attr('height', $('iframe').contents().find(".grid-view").height());
+        console.log($('#iframe-serie').contents().find("#iframe-page").height());
+        $("#iframe-serie").attr('height', $('#iframe-serie').contents().find("#iframe-page").height());
         $("#iframe-serie").attr('scrolling', 'yes');
         setTimeout(
             function(){
@@ -27,7 +27,7 @@ $( document ).ready(function() {
 
     });
 	$("#submitForm").click(function(){
-    	document.getElementById('iframe-serie').src = 'http://localhost/technc/backend/web/index.php?r=product';
+    	document.getElementById('iframe-serie').src = url+'/technc/backend/web/index.php?r=product%2Fserie&id='+$('#tree').jstree('get_checked',null,true);
     	console.log($('iframe').contents().find("").height());
     	$("#iframe-serie").attr('height', $('iframe').contents().height());
     	$("#iframe-serie").attr('scrolling', 'yes');
@@ -35,7 +35,7 @@ $( document ).ready(function() {
             'overflow' : 'auto',
             'height' : '500',
         });
-        $("#iframe-set").loader('show','<img style="height:50px; width:50px;" src="http://localhost/technc/backend/web/images/loader.gif">');
+        $("#iframe-set").loader('show','<img style="height:50px; width:50px;" src="'+url+'/technc/backend/web/images/loader.gif">');
 
 	});
 });

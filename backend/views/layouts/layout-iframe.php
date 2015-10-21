@@ -17,7 +17,9 @@ AppAsset::register($this);
 </head>
 <body ng-app="myApp-iframe">
 <?php $this->beginBody() ?>
-	<?=$content?>
+	<div id="iframe-page" >
+		<?=$content?>
+	</div>
 <?php $this->endBody() ?>
 </body>
 </html>

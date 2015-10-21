@@ -59,6 +59,7 @@ class ProductController extends \yii\web\Controller
         $this->layout = 'layout-iframe';
         return $this->render('serie',[
             'id' => $id,
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

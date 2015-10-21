@@ -48,6 +48,11 @@ a:hover {
   background-color: #282828;
   background-size: 16px 16px; }
 
+.input-group-addon:hover {
+  background-color: #ddd;
+  color: #000;
+  border: 1px solid #ccc; }
+
 .header-context {
   position: absolute;
   width: 100%;
@@ -262,6 +267,9 @@ section {
       color: #BBB; }
     section article .breadcrumb-title p.en {
       color: #479BD7; }
+
+#iframe-page {
+  min-height: 300px; }
 
 .grid-view table.items {
   background: white;
