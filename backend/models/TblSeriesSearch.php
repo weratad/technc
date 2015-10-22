@@ -34,13 +34,17 @@ class TblSeriesSearch extends TblSeries
      *
      * @return ActiveDataProvider
      */
+    public $id;
     public $pro_cat;
     public function search($params)
     {
-         $query = TblSeries::find();
-
-         $this->load($params);
-
+        $query = TblSeries::find();
+        $id=(empty($params['id']) ? '': $params['id']);
+        $this->load($params);
+        $query->andFilterWhere([
+            'tree_id' => $id,
+            'serie_name' => $this->serie_name,
+        ]);
          $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

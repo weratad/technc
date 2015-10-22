@@ -9,6 +9,8 @@ use yii\grid\GridView;
 use app\models\TblProCat;
 use app\models\TblProDetail;
 use app\models\TblProductGrouplist;
+
+
 $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/catalog.js',  ['depends' => ['yii\web\YiiAsset','backend\assets\AngularAsset']]);
 \jstreemaster\jstree\jstreeWidget::widget(['id'=>'tree']);
 $this->title = 'My Yii Application';
@@ -68,13 +70,13 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
         <div id="iframe-set" style="width:720px;">
             <iframe id="iframe-serie" src="<?=Url::to(['serie'])?>" frameBorder="0" width="700"></iframe>
         </div><!--iframe-set-->
-        <p><button ng-click="message()">Send message to iframe</button></p>
+        <!--<p><button ng-click="message()">Send message to iframe</button></p>
     <p>Messages from iframe</p>
     <ul>
       <li ng-repeat="message in messages track by $index">{{message}}</li>
     </ul>
 <?= Html::button( Html::img(Url::base().'/images/icons/disk.png').' บันทึก',['id'=>'sumbitsort','class'=>'btn btn-primary']) ?>   
-       </div>
+       --></div>
    </div>
 
 

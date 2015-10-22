@@ -29,6 +29,7 @@ class TblSeries extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['serie_name'], 'required'],
             [['webpage_id'], 'integer'],
             [['serie_name'], 'string', 'max' => 150]
         ];
@@ -43,6 +44,7 @@ class TblSeries extends \yii\db\ActiveRecord
             'serie_id' => 'Serie ID',
             'serie_name' => 'ชื่อซีรี่ย์',
             'webpage_id' => 'Webpage ID',
+            'tree_id' => 'หมวดสินค้า',
         ];
     }
 

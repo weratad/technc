@@ -22,7 +22,9 @@ $aside-nav-bgcolor-active-rgba : rgba(71,155,215, .7)
     -moz-box-shadow: inset -2px 0px 2px $aside-bg-border-right
     -webkit-box-shadow: inset -2px 0px 2px $aside-bg-border-right
     box-shadow: inset -2px 0px 2px $aside-bg-border-right
-
+@mixin i-con($name, $padding)
+    padding: $padding
+    background: url('/technc/backend/web/images/icons/'+$name) center center no-repeat
 body
     font-family : sukhumvitlight
     background-color: #FFF
@@ -294,6 +296,27 @@ section
 
 #iframe-page
     min-height: 300px
+.group-addon
+    padding: 6px 12px
+    font-size: 14px
+    font-weight: normal
+    line-height: 1
+    color: #555
+    text-align: center
+    background-color: #EEE
+    border: 1px solid #CCC
+    border-radius: 4px
+    display: table-cell
+    width: 1%
+    white-space: nowrap
+    vertical-align: middle
+    border-top-left-radius: 0px
+    border-bottom-left-radius: 0px
+i.i-cog
+    @include i-con('cog.png', 10px)
+i.i-add
+    @include i-con('add.png', 10px)
+
 
 .grid-view
     table.items

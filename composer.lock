@@ -4,9 +4,141 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8985a788ceb86e3e34292f2625895a91",
-    "content-hash": "9a9973491858d5d37052d9de434837a5",
+    "hash": "3090a3e8b22343ea78fb8224ce1872f8",
+    "content-hash": "91b05eb735a35617ef4f40e6b02bd8b5",
     "packages": [
+        {
+            "name": "2amigos/yii2-dosamigos-asset-bundle",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-dosamigos-asset-bundle.git",
+                "reference": "39316c82cf25a884b9037e758968e1323b4add33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-dosamigos-asset-bundle/zipball/39316c82cf25a884b9037e758968e1323b4add33",
+                "reference": "39316c82cf25a884b9037e758968e1323b4add33",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\assets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "2amigOS! Asset Bundle for Yii2.",
+            "keywords": [
+                "asset",
+                "component",
+                "extension",
+                "yii"
+            ],
+            "time": "2014-09-01 13:43:36"
+        },
+        {
+            "name": "2amigos/yii2-editable-widget",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-editable-widget.git",
+                "reference": "4ef78e7bfd575dc39e43e85ef23196382cb72783"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-editable-widget/zipball/4ef78e7bfd575dc39e43e85ef23196382cb72783",
+                "reference": "4ef78e7bfd575dc39e43e85ef23196382cb72783",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/select2": "3.5.2",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\editable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "X-Editable widget for Yii2.",
+            "keywords": [
+                "extension",
+                "widget",
+                "x-editable",
+                "yii"
+            ],
+            "time": "2015-02-20 15:13:36"
+        },
+        {
+            "name": "2amigos/yii2-grid-view-library",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-grid-view-library.git",
+                "reference": "31ca114deaf337b3e799cf1e8f963c372e4873a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-grid-view-library/zipball/31ca114deaf337b3e799cf1e8f963c372e4873a8",
+                "reference": "31ca114deaf337b3e799cf1e8f963c372e4873a8",
+                "shasum": ""
+            },
+            "require": {
+                "2amigos/yii2-dosamigos-asset-bundle": "0.1.*",
+                "2amigos/yii2-editable-widget": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\grid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "GridView Widget Extensions for Yii2.",
+            "keywords": [
+                "extension",
+                "grid",
+                "widget",
+                "yii"
+            ],
+            "time": "2014-12-17 09:28:22"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.5",
@@ -177,6 +309,34 @@
                     "Gruntfile.js",
                     "node_modules",
                     "package.json"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/select2",
+            "version": "3.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/select2/select2.git",
+                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/select2/select2/zipball/6633cda9061d9fc65075dd140c63f9a6adbcbd72",
+                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "select2.js",
+                    "select2.css",
+                    "select2.png",
+                    "select2x2.png",
+                    "select2-spinner.gif"
                 ]
             }
         },

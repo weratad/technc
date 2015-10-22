@@ -8,8 +8,34 @@ use app\models\TblProDetailSearch;
 use app\models\TblProductGroup;
 use app\models\TblSeries;
 use app\models\TblSeriesSearch;
+use yii\web\Response;
+use app\components\BaseController;
+use dosamigos\editable\EditableAction;
 class ProductController extends \yii\web\Controller
 {
+    public $jsFile;
+    public function init() {
+        parent::init();
+        $this->jsFile = '@app/views/' . $this->id . '/ajax.js';
+        // Publish and register the required JS file
+        Yii::$app->assetManager->publish($this->jsFile);
+        $this->getView()->registerJsFile(
+            Yii::$app->assetManager->getPublishedUrl($this->jsFile),
+            ['depends' => ['yii\web\YiiAsset']] // depends
+        );
+    }
+    public function actions()
+    {
+        return [
+            // ...
+            'editable' => [
+                'class' => EditableAction::className(),
+                'modelClass' => TblSeries::className(),
+                'forceCreate' => false
+            ]
+            // ...
+        ];
+    }
     public function actionIndex()
     {
         $model = new TblProDetail();
@@ -63,6 +89,25 @@ class ProductController extends \yii\web\Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+    public function actionLinkForm(){
+
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $TblSeries = $_POST['TblSeries'];
+                $res = array(
+                    'body'    => print_r($_POST, true),
+                    'success' => true,
+                );
+                $model = new TblSeries;
+                $model->serie_name = $TblSeries['serie_name'];
+                $model->tree_id = $_POST['id'];
+                $model->save();
+            return $res;
+        }
+    }
+    public function actionEditable(){
+        echo '55';
     }
 
 }
