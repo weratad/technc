@@ -21,7 +21,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
     				<div class="input-group">
     					<?= Html::input('text', 'TblSeries[serie_name]', '', ['class' => 'form-control shw']) ?>
     					<?= Html::a('เพิ่ม', ['product/link-form'], [
-        						'id' => 'ajax_link_02',
+        						'id' => 'addserie',
         						'data-on-done' => 'linkFormDone',
         						'data-on-form' => 'link_form',
         						'data-on-id' => $id,
@@ -33,10 +33,6 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
   				</div>
 	 <?php
 		ActiveForm::end();
-	$this->registerJs("$(window).on('unload',function() {
-    login();
-});", \yii\web\View::POS_READY);
-		$this->registerJs("$('#ajax_link_02').click(handleAjaxLink);", \yii\web\View::POS_READY);
 	?>
 	<?php
 	$tags = array(
@@ -95,11 +91,6 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
 		echo '<p><h3>...ไม่ได้ระบุหมวดสินค้า</h3></p>';
 	}
 	?>
-     <p><button ng-click="message()">Send message to parent</button>
-    <p>Messages from parent</p>
-    <ul>
-      <li ng-repeat="message in messages track by $index">{{message}}</li>
-    </ul>
-    
-	<br/><br/><br/>
+
+	<br/><br/><br/><br/><br/><br/>
 </div><!--col-lg-12-->

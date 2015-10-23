@@ -30,9 +30,9 @@ jQuery('a[rel="serie_name_editable"]').editable()*/
 angular.element(document).ajaxSend(function(event, jqxhr, settings) {
   	switch ($.url(settings.url).param('r')) {
   		case 'product/sorting': //set ajax page url
+  		case 'product/link-form':
   			angular.element('[ng-controller=SerieController]').scope().openloader();
   			window.location.reload(true);
-  		//case 'product/sorting': muti value switch
   			break;
   		case 'product/editable':
   				var obj =JSON.parse('{"' + decodeURI(settings.data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
@@ -63,3 +63,22 @@ angular.element(document).ajaxComplete(function(event, request ,settings) {
   		}
   	}
 });*/
+$( document ).ready(function() {
+	$('#addserie').click(function(e) {
+		e.preventDefault();
+		var
+			$link = $(e.target),
+        	callUrl = $link.attr('href'),
+        	formId = $link.data('onForm'),
+        	onId = $link.data('onId'),
+        	data = (typeof formId === "string" ? $('#' + formId).serializeArray() : null);
+        data.push({name: 'id', value: onId});
+        $.ajax({
+        	type: "post",
+        	dataType: 'json',
+        	url: callUrl,
+        	data: data
+    	});
+
+	});
+});
