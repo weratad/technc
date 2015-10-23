@@ -51,6 +51,7 @@ class TblSeries extends \yii\db\ActiveRecord
             'serie_name' => 'ชื่อซีรี่ย์',
             'webpage_id' => 'Webpage ID',
             'tree_id' => 'หมวดสินค้า',
+            'serie_group' => 'กลุ่ม'
         ];
     }
 

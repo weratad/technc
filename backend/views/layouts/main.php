@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body ng-app="myApp">
+<body>
 <?php $this->beginBody() ?>
     <header>
         <div class="header-top-fix">

@@ -11,11 +11,12 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.write('<base href="' + document.location + '" />');</script>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body ng-app="myApp-iframe">
+<body>
 <?php $this->beginBody() ?>
 	<div id="iframe-page" >
 		<?=$content?>

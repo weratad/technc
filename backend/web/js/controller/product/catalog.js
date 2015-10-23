@@ -1,19 +1,26 @@
-/*var  app = angular.module('myApp', []);
- app.controller('ParentController', function($scope) {
-    $scope.messages = [];
-    $scope.$on('from-iframe', function(e, message) {
-      $scope.messages.push(message);
-    });
-    $scope.message = function() {
-      $scope.$broadcast('from-parent', 'Sent from parent');
-    };
-  });*/
+var  app = angular.module('AppCatalog', []);
+app.controller('CatalogController', function($scope) {
+  $scope.messages = [];
+  $scope.$on('from-iframe', function(e, message) {
+    $scope.messages.push(message);
+  });
+
+  $scope.$on('openloader-iframe', function(e, message) {
+    $("#iframe-set").loader('show','<img style="height:50px; width:50px;" src="'+url+'/technc/backend/web/images/loader.gif">');
+  });
+  $scope.$on('closeloader-iframe', function(e, message) {
+    $('#iframe-set').loader('hide');
+  });
+
+  $scope.message = function() {
+    $scope.$broadcast('from-parent', 'Sent from parent');
+  };
+});
 //url
 var url = 'http://localhost';
 // Jquery
 $( document ).ready(function() {
     //console.log($( '.grid-view' ).height());
-    
     $('#iframe-serie').load(function(){
         $(this).show();
         console.log('laod the iframe');

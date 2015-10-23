@@ -22,13 +22,14 @@ class AppAsset extends AssetBundle
         'css/style.sass'
     ];
     public $js = [
-        'js/jquery/jquery.cookie.js',
         'js/page.js',
-        'js/plugin/center-loader.min.js'
+        'js/plugin/center-loader.min.js',
+        'js/plugin/purl.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        //'backend\assets\AngularAsset',
+        'backend\assets\JqueryAsset',
+        'backend\assets\AngularAsset',
     ];
 }

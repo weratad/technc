@@ -5,8 +5,9 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\TreeData;
 use dosamigos\editable\Editable;
+$this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.js',  ['depends' => ['yii\web\YiiAsset','backend\assets\JqueryAsset','backend\assets\AngularAsset']]);
 ?>
-<div class="col-lg-12">
+<div class="col-lg-12" ng-app="AppSerie" ng-controller="SerieController">
 <form class="form-inline">
   
 </form>
@@ -38,6 +39,13 @@ use dosamigos\editable\Editable;
 		$this->registerJs("$('#ajax_link_02').click(handleAjaxLink);", \yii\web\View::POS_READY);
 	?>
 	<?php
+	$tags = array(
+      array('id' => 1, 'text' => 'กลุ่ม 1',),
+      array('id' => 2, 'text' => 'กลุ่ม 2'),
+      array('id' => 3, 'text' => 'กลุ่ม 3'),
+      array('id' => 4, 'text' => 'กลุ่ม 4'),
+      array('id' => 5, 'text' => 'สร้างกลุ่มใหม่'),
+    );
 		echo GridView::widget([
     		'dataProvider' => $dataProvider,
     		//'filterModel' => $searchModel,
@@ -58,6 +66,21 @@ use dosamigos\editable\Editable;
         				'mode' => 'popup',
     				]
 				],
+				[
+    				'class' => \dosamigos\grid\EditableColumn::className(),
+    				'attribute' => 'serie_group',
+    				'header' => false,
+    				'url' => ['editable'],
+    				'type' => 'select2',
+    				'editableOptions' => [
+        				'mode' => 'popup',
+        				'source'    => $tags,
+        				'select2' => ['width' => '124px'],
+        				'encode' => true,
+    				],
+
+
+				],
 				//'order'
         		// ...
     		],
@@ -72,5 +95,11 @@ use dosamigos\editable\Editable;
 		echo '<p><h3>...ไม่ได้ระบุหมวดสินค้า</h3></p>';
 	}
 	?>
+     <p><button ng-click="message()">Send message to parent</button>
+    <p>Messages from parent</p>
+    <ul>
+      <li ng-repeat="message in messages track by $index">{{message}}</li>
+    </ul>
+    
 	<br/><br/><br/>
 </div><!--col-lg-12-->

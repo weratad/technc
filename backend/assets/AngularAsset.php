@@ -7,7 +7,7 @@ class AngularAsset extends AssetBundle
     public $sourcePath = '@bower/angular';
     public $css = [];
     public $js = [
-      //  'angular.min.js',
+        'angular.min.js',
     ];
     public $depends = [];
 }

@@ -27,13 +27,14 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
     width: 500px;
     color: #000;
 }
-</style>   
+</style>
+<div ng-app="AppCatalog" ng-controller="CatalogController">
 <div class="col-md-5">
     <?= Html::input('text', '', '', ['id' => 'treesearch','class' => 'input-style','placeholder' => 'ค้นหา'])?>
     <div id="tree"></div>
      <?= Html::button(Html::img(Url::base().'/images/icons/search.png').' ค้นหา',['id'=>'submitForm','class'=>'btn btn-default']) ?>
 </div>
-<div class="col-md-7" ng-controller="ParentController">
+<div class="col-md-7">
     <div id="box">
         <div class="box-top">จัดการแบ่งกลุ่ม</div>
         <!--<div class="box-panel">
@@ -70,6 +71,11 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
         <div id="iframe-set" style="width:720px;">
             <iframe id="iframe-serie" src="<?=Url::to(['serie'])?>" frameBorder="0" width="700"></iframe>
         </div><!--iframe-set-->
+        <p><button ng-click="message()">Send message to iframe</button></p>
+    <p>Messages from iframe</p>
+    <ul>
+      <li ng-repeat="message in messages track by $index">{{message}}</li>
+    </ul>
         <!--<p><button ng-click="message()">Send message to iframe</button></p>
     <p>Messages from iframe</p>
     <ul>
@@ -77,7 +83,7 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
     </ul>
 <?= Html::button( Html::img(Url::base().'/images/icons/disk.png').' บันทึก',['id'=>'sumbitsort','class'=>'btn btn-primary']) ?>   
        --></div>
-   </div>
+   </div><!--ng_model-->
 
 
 

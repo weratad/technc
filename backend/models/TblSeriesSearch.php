@@ -47,7 +47,7 @@ class TblSeriesSearch extends TblSeries
         ]);
          $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['order'=>SORT_ASC]]
+            'sort'=> ['defaultOrder' => ['serie_group'=>SORT_ASC,'order'=>SORT_ASC]]
         ]);
         return $dataProvider;
     }
