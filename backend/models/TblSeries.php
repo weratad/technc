@@ -18,11 +18,17 @@ class TblSeries extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $id;
     public static function tableName()
     {
         return 'tbl_series';
     }
-
+    public function setId(){
+         return $this->serie_id;
+    }
+    public function getId(){
+         return $this->serie_id;
+    }
     /**
      * @inheritdoc
      */
@@ -45,6 +51,16 @@ class TblSeries extends \yii\db\ActiveRecord
             'serie_name' => 'ชื่อซีรี่ย์',
             'webpage_id' => 'Webpage ID',
             'tree_id' => 'หมวดสินค้า',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'sortable' => [
+                'class' => \kotchuprik\sortable\behaviors\Sortable::className(),
+                'query' => self::find(),
+            ],
         ];
     }
 

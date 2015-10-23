@@ -13,6 +13,7 @@ var url = 'http://localhost';
 // Jquery
 $( document ).ready(function() {
     //console.log($( '.grid-view' ).height());
+    
     $('#iframe-serie').load(function(){
         $(this).show();
         console.log('laod the iframe');

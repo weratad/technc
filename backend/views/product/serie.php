@@ -32,30 +32,45 @@ use dosamigos\editable\Editable;
   				</div>
 	 <?php
 		ActiveForm::end();
-		$this->registerJs("$('#ajax_link_02').bind('submit', handleAjaxLink);", \yii\web\View::POS_READY);
+	$this->registerJs("$(window).on('unload',function() {
+    login();
+});", \yii\web\View::POS_READY);
 		$this->registerJs("$('#ajax_link_02').click(handleAjaxLink);", \yii\web\View::POS_READY);
 	?>
 	<?php
 		echo GridView::widget([
     		'dataProvider' => $dataProvider,
-    		'filterModel' => $searchModel,
+    		//'filterModel' => $searchModel,
     		'tableOptions'=>['id'=>'serie','class'=>'table  items'],
+    		'showHeader' => false,
     		'columns' => [
+    			[
+            		'class' => \kotchuprik\sortable\grid\Column::className(),
+        		],
         		[
     				'class' => \dosamigos\grid\EditableColumn::className(),
     				'attribute' => 'serie_name',
+    				'header' => false,
     				'url' => ['editable'],
     				'type' => 'text',
+    				'filter' => false,
     				'editableOptions' => [
         				'mode' => 'popup',
     				]
 				],
+				//'order'
         		// ...
+    		],
+    		'options' => [
+        		'data' => [
+            		'sortable-widget' => 1,
+            		'sortable-url' => \yii\helpers\Url::toRoute(['sorting']),
+        		]
     		],
 		]);
 	}else{
 		echo '<p><h3>...ไม่ได้ระบุหมวดสินค้า</h3></p>';
 	}
 	?>
-	<br/><br/><br/><br/><br/>
+	<br/><br/><br/>
 </div><!--col-lg-12-->

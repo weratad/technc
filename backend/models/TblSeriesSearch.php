@@ -34,10 +34,10 @@ class TblSeriesSearch extends TblSeries
      *
      * @return ActiveDataProvider
      */
-    public $id;
     public $pro_cat;
     public function search($params)
     {
+        $id = $this->serie_id;
         $query = TblSeries::find();
         $id=(empty($params['id']) ? '': $params['id']);
         $this->load($params);
@@ -47,6 +47,7 @@ class TblSeriesSearch extends TblSeries
         ]);
          $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['order'=>SORT_ASC]]
         ]);
         return $dataProvider;
     }

@@ -32,7 +32,12 @@ class ProductController extends \yii\web\Controller
                 'class' => EditableAction::className(),
                 'modelClass' => TblSeries::className(),
                 'forceCreate' => false
-            ]
+            ],
+            'sorting' => [
+                'class' => \kotchuprik\sortable\actions\Sorting::className(),
+                'query' => TblSeries::find(),
+                'pkName' => 'serie_id'
+            ],
             // ...
         ];
     }
@@ -106,8 +111,4 @@ class ProductController extends \yii\web\Controller
             return $res;
         }
     }
-    public function actionEditable(){
-        echo '55';
-    }
-
 }

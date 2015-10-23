@@ -21,7 +21,8 @@
         "mervick/yii2-mthaml": "*",
         "coffeescript/coffeescript": "^1.3",
         "2amigos/yii2-editable-widget": "^0.1.4",
-        "2amigos/yii2-grid-view-library": "*"
+        "2amigos/yii2-grid-view-library": "*",
+        "kotchuprik/yii2-sortable-widgets": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
