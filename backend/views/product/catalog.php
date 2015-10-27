@@ -68,8 +68,8 @@ $cksearch= Yii::$app->request->get('TblProDetailSearch');
                     echo '<li id="item-'.$valueProCat->procat_id.'" class="ui-state-default" data-key="'.$valueProCat->procat_id.'">Item '.$valueProCat->prodata->nm.'</li>';
                 }*/
                 ?>
-                <div id="iframe-set" style="width:720px;">
-                    <iframe id="iframe-serie" src="<?=Url::to(['serie'])?>" frameBorder="0" width="700"></iframe>
+                <div id="iframe-set" style="width:100%;">
+                    <iframe id="iframe-serie" src="<?=Url::to(['serie'])?>" frameBorder="0" style="width:100%;"></iframe>
                 </div><!--iframe-set-->
             </div>
         </div><!--ng_model-->

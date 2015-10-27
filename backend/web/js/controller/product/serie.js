@@ -64,7 +64,25 @@ angular.element(document).ajaxComplete(function(event, request ,settings) {
   	}
 });*/
 $( document ).ready(function() {
-	$('#addserie').click(function(e) {
+  swal({   
+    title: "จะทำอะไรหรอ ?",   
+    text: "จะทำอะไรอะ",   
+    type: "warning",   
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "จะลบฉันแน่!",   
+    cancelButtonText: "ไม่, ฉันไม่ลบ!",   
+    closeOnConfirm: false,   closeOnCancel: false }, 
+      function(isConfirm){   
+        if (isConfirm) {     
+          swal("ลบ!", "กากจริงๆ.", "success");   
+        } else {     
+          swal("ยกเลิก", "ดีมากๆ :)", "error");   
+        } 
+      });
+
+	
+  $('#addserie').click(function(e) {
 		e.preventDefault();
 		var
 			$link = $(e.target),

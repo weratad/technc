@@ -6,8 +6,10 @@ use yii\db\Query;
 use app\models\TblProDetail;
 use app\models\TblProDetailSearch;
 use app\models\TblProductGroup;
+use app\models\TblProCat;
 use app\models\TblSeries;
 use app\models\TblSeriesSearch;
+use app\models\TreeData;
 use yii\web\Response;
 use app\components\BaseController;
 use dosamigos\editable\EditableAction;
@@ -87,12 +89,19 @@ class ProductController extends \yii\web\Controller
         $model = new TblSeries();
         $searchModel = new TblSeriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataTreedate = TreeData::findOne($id);
+
+        $dataProCat = TblProCat::find()->joinWith('procat')->where('prodata_id = :id',[':id'=>$id])->all();
+
         $this->layout = 'layout-iframe';
         return $this->render('serie',[
             'id' => $id,
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'dataTreedate' => $dataTreedate,
+            'dataProCat' => $dataProCat
         ]);
     }
     public function actionLinkForm(){

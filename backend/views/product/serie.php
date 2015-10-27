@@ -2,8 +2,8 @@
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\TblProDetail;
 use yii\bootstrap\ActiveForm;
-use app\models\TreeData;
 use dosamigos\editable\Editable;
 $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.js',  ['depends' => ['yii\web\YiiAsset','backend\assets\JqueryAsset','backend\assets\AngularAsset']]);
 ?>
@@ -12,7 +12,6 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
   
 </form>
 	<?php
-	$dataTreedate = TreeData::findOne($id);
 	if(!empty($id)){
 		echo '<p><h3>'.$dataTreedate['nm'].'</h3></p>';
 			$form = ActiveForm::begin(['id' => 'link_form']);
@@ -35,18 +34,34 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
 		ActiveForm::end();
 	?>
 	<?php
-	$tags = array(
-      array('id' => 1, 'text' => 'กลุ่ม 1',),
-      array('id' => 2, 'text' => 'กลุ่ม 2'),
-      array('id' => 3, 'text' => 'กลุ่ม 3'),
-      array('id' => 4, 'text' => 'กลุ่ม 4'),
-      array('id' => 5, 'text' => 'สร้างกลุ่มใหม่'),
-    );
-		echo GridView::widget([
+    /** Create Array Catagory */
+    $ProCatArray = array();
+    $ProCatArray[] = array('id' => 0, 'text' => 'ไม่ระบุ');
+    foreach ($dataProCat as  $valueProCat) {
+        $dataProDetail = TblProDetail::find()->where(['lang_id' => 1,'pro_id' => $valueProCat->procat_id])->one();
+        $ProCatArray[] = array('id' => $valueProCat->procat_id,'text' => "$dataProDetail->pro_de_name");
+    }
+     // End Array Catagory
+    /** get Max group Serie */
+    $MaxGroup = array();
+    foreach ($dataProvider->getModels() as $data) {
+        $MaxGroup[] = $data->serie_group;
+    }
+    $Max_Serie_Group = (empty($MaxGroup) ? 0: max($MaxGroup));
+    /** Create Array Tags Array */
+    $tags = array();
+    $tags[] = array('id' => 0, 'text' => 'ไม่ระบุ');
+    for($i=1;$i<=$Max_Serie_Group;$i++){
+        $tags[] = array('id' => $i, 'text' => 'กลุ่ม '.$i);
+    }
+    $tags[] = array('id' => $Max_Serie_Group+1, 'text' => 'สร้างกลุ่มใหม่'); // Add Last Array Tags New Group
+	/** End Tags */
+
+        echo GridView::widget([
     		'dataProvider' => $dataProvider,
     		//'filterModel' => $searchModel,
     		'tableOptions'=>['id'=>'serie','class'=>'table  items'],
-    		'showHeader' => false,
+    		'showHeader' => true,
     		'columns' => [
     			[
             		'class' => \kotchuprik\sortable\grid\Column::className(),
@@ -54,7 +69,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
         		[
     				'class' => \dosamigos\grid\EditableColumn::className(),
     				'attribute' => 'serie_name',
-    				'header' => false,
+    				//'header' => false,
     				'url' => ['editable'],
     				'type' => 'text',
     				'filter' => false,
@@ -62,12 +77,35 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
         				'mode' => 'popup',
     				]
 				],
+                [
+                    'class' => \dosamigos\grid\EditableColumn::className(),
+                    'attribute' => 'product_id',
+                    //'header' => false,
+                    'url' => ['editable'],
+                    'type' => 'select2',
+                    'value'=>function ($data){
+                        $dataName = TblProDetail::find()->where(['lang_id' => 1,'pro_id' => $data->product_id])->one();
+                        return 'หน้า '.$dataName['pro_de_name'];
+                    },
+                    'editableOptions' => [
+                        'mode' => 'popup',
+                        'source'    => $ProCatArray,
+                        'select2' => ['width' => '124px'],
+                        'encode' => true,
+                    ],
+
+
+                ],
 				[
     				'class' => \dosamigos\grid\EditableColumn::className(),
     				'attribute' => 'serie_group',
-    				'header' => false,
+    				//'header' => false,
     				'url' => ['editable'],
     				'type' => 'select2',
+                    'value'=>function ($data) {
+                        return 'กลุ่ม '.$data->serie_group;
+                       // return Html::url('site/index');
+                    },
     				'editableOptions' => [
         				'mode' => 'popup',
         				'source'    => $tags,

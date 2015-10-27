@@ -36,7 +36,7 @@ class TblSeries extends \yii\db\ActiveRecord
     {
         return [
             [['serie_name'], 'required'],
-            [['webpage_id'], 'integer'],
+            [['product_id'], 'integer'],
             [['serie_name'], 'string', 'max' => 150]
         ];
     }
@@ -49,7 +49,7 @@ class TblSeries extends \yii\db\ActiveRecord
         return [
             'serie_id' => 'Serie ID',
             'serie_name' => 'ชื่อซีรี่ย์',
-            'webpage_id' => 'Webpage ID',
+            'product_id' => 'หน้าสินค้า',
             'tree_id' => 'หมวดสินค้า',
             'serie_group' => 'กลุ่ม'
         ];
@@ -65,11 +65,4 @@ class TblSeries extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getWebpage()
-    {
-        return $this->hasOne(TblWebpage::className(), ['webpage_id' => 'webpage_id']);
-    }
 }
