@@ -23,7 +23,7 @@ use yii\widgets\Pjax;
 							$html = html_entity_decode($html, ENT_QUOTES, 'UTF-8');
 							$html = mb_substr($html, 0,120, 'UTF-8');
 							$html .= "…";
-							return '<label>'.Html::a((empty($data->pro_de_name)? 'ไม่มีชื่อเรื่อง':$data->pro_de_name),['/product/edit?lang='.$data->lang_id.'&product='.$data->pro_id]).'</label><div class="detail">'.$html.'</div>';
+							return '<label>'.Html::a((empty($data->pro_de_name)? 'ไม่มีชื่อเรื่อง':$data->pro_de_name),Url::to(['product/edit','lang'=> $data->lang_id,'product'=>$data->pro_id])).'</label><div class="detail">'.$html.'</div>';
 						},
 					],
 					[

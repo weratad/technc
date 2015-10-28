@@ -72,9 +72,10 @@ angular.element(document).ajaxComplete(function(event, request ,settings) {
         text: "You will not be able to recover this imaginary file!",
         type: "warning",
         showCancelButton: true,
+        showLoaderOnConfirm: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
+        closeOnConfirm: false,
       }, function (isConfirm) {
         if (!isConfirm) return;
         $.ajax({

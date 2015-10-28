@@ -49,7 +49,6 @@ class ProductController extends \yii\web\Controller
         $searchModel = new TblProDetailSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize=5;
-        $this->layout = 'layout-iframe';
         return $this->render('index',[
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -124,5 +123,54 @@ class ProductController extends \yii\web\Controller
                 $model->save();
             return $res;
         }
+    }
+
+      public function ProductCp(){
+        $product = '';
+        $lang_id = 1;
+        $ckProduct = Yii::$app->request->get('product');
+        $ckLang = Yii::$app->request->get('lang');
+        $ckData = Yii::$app->request->post();
+        if(!empty($ckProduct)){
+           $product = Yii::$app->request->get('product');
+        }
+        if(!empty($ckLang)){
+            $lang_id = Yii::$app->request->get('lang');
+        }
+        $model = TblProDetail::find()->where(['pro_id' => $product,'lang_id' => $lang_id])->one();
+        if(empty($model)){
+            $model = new TblProDetail(); 
+        }
+        if (!empty($ckData)) { // insert
+                $valueDB=Yii::$app->request->post('data');
+                $catpro = explode(",", $valueDB[3]['value']);
+                TblProCat::deleteAll('procat_id = :product', [':product' => $product]);
+                foreach ($catpro as $key => $value) {
+                    $modelTblProCat = new TblProCat;
+                    $modelTblProCat->procat_id = $product;
+                    $modelTblProCat->prodata_id = $value;
+                    $modelTblProCat->save(); 
+                }
+                $model->pro_de_name = $valueDB[1]['value'];
+                $model->pro_de_detail = $valueDB[2]['value'];
+                $model->pro_de_detail = $valueDB[2]['value'];
+                $model->pro_id = $product;
+                $model->lang_id = $lang_id;
+                if($model->save()){
+                    echo date('d/m/Y H:i:s');
+                //return $this->redirect([Yii::$app->controller->action->id, 'lang' => $lang_id,'product'=> $product]);
+                }
+        }else {  //default
+            return $this->render('add',[
+                'model' => $model,
+            'langID' => $lang_id,
+            'productID' => $product
+            ]);
+        }
+    }
+
+    public function actionEdit()
+    {
+            return   $this->ProductCp();
     }
 }

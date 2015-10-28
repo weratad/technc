@@ -592,7 +592,7 @@ var fadeIn = function fadeIn(elem, interval) {
     });
     tick();
   }
-  elem.style.display = 'none'; //fallback IE8
+  elem.style.display = 'none';// defalue elem.style.display = 'block'; //fallback IE8
 };
 
 var fadeOut = function fadeOut(elem, interval) {
