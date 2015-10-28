@@ -296,6 +296,15 @@ i.i-add {
   padding: 10px;
   background: url("/technc/backend/web/images/icons/add.png") center center no-repeat; }
 
+i.i-error {
+  padding: 10px;
+  background: url("/technc/backend/web/images/icons/error.png") center center no-repeat; }
+
+i.i-delete {
+  padding: 10px;
+  background: url("/technc/backend/web/images/icons/delete.png") center center no-repeat;
+  cursor: pointer; }
+
 .grid-view table.items {
   background: white;
   border-collapse: collapse;

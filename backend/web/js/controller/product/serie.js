@@ -8,7 +8,7 @@ app.controller('SerieController', function($scope, $parentScope) {
     $parentScope.$emit('from-iframe','Sent from iframe');
     $parentScope.$apply();
   };
-*/
+  */
   $scope.openloader = function() {
     $parentScope.$emit('openloader-iframe','');
     $parentScope.$apply();
@@ -28,30 +28,30 @@ app.controller('SerieController', function($scope, $parentScope) {
 });
 jQuery('a[rel="serie_name_editable"]').editable()*/
 angular.element(document).ajaxSend(function(event, jqxhr, settings) {
-  	switch ($.url(settings.url).param('r')) {
+ switch ($.url(settings.url).param('r')) {
   		case 'product/sorting': //set ajax page url
   		case 'product/link-form':
-  			angular.element('[ng-controller=SerieController]').scope().openloader();
-  			window.location.reload(true);
-  			break;
-  		case 'product/editable':
-  				var obj =JSON.parse('{"' + decodeURI(settings.data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-  				switch (obj.name) {
+     angular.element('[ng-controller=SerieController]').scope().openloader();
+     window.location.reload(true);
+     break;
+     case 'product/editable':
+     var obj =JSON.parse('{"' + decodeURI(settings.data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+     switch (obj.name) {
   					case 'serie_group': // set attibule
   						//console.log(obj.name);
   						angular.element('[ng-controller=SerieController]').scope().openloader();
   						window.location.reload(true);
   						break;
-  					default:
-  						''
-  				}
-  			break;
-  		default:
+             default:
+             ''
+           }
+           break;
+           default:
   			//angular.element('[ng-controller=SerieController]').scope().openloader();
-  	}
-});
+     }
+   });
 angular.element(document).ajaxComplete(function(event, request ,settings) {
-  		angular.element('[ng-controller=SerieController]').scope().closeloader();
+  angular.element('[ng-controller=SerieController]').scope().closeloader();
 });
 /*$(document).ajaxComplete(function(event, request ,settings) {
 	var obj =JSON.parse('{"' + decodeURI(settings.data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
@@ -62,9 +62,52 @@ angular.element(document).ajaxComplete(function(event, request ,settings) {
   			window.location.reload(true);
   		}
   	}
-});*/
+  });*/
+(function( $ ){
+  $.fn.confirmDelete = function (obj,key,url) {
+      var tr = obj.closest('tr');
+      //console.log(tr.data());
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+      }, function (isConfirm) {
+        if (!isConfirm) return;
+        $.ajax({
+            url: url,
+            type: "GET",
+          data: {
+            id: key
+          },
+          dataType: "html",
+          success: function () {
+            swal("Done!", "It was succesfully deleted!", "success");
+            tr.closest('tr').remove();
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            swal("Error deleting!", "Please try again", "error");
+          }
+      });
+    });
+  };
+})( jQuery );
+
 $( document ).ready(function() {
-  swal({   
+  $( ".i-delete" ).click(function() {
+    var url =  window.location.origin+'/technc/backend/web/index.php?r=product%2Fremove-serie';
+    var obj = $(this);
+    var key = obj.closest('tr').data().key;
+    $(this).confirmDelete(obj[0],key,url);
+   // console.log($(this));
+   
+
+ });
+
+  /*swal({   
     title: "จะทำอะไรหรอ ?",   
     text: "จะทำอะไรอะ",   
     type: "warning",   
@@ -80,23 +123,23 @@ $( document ).ready(function() {
           swal("ยกเลิก", "ดีมากๆ :)", "error");   
         } 
       });
+*/
 
-	
-  $('#addserie').click(function(e) {
-		e.preventDefault();
-		var
-			$link = $(e.target),
-        	callUrl = $link.attr('href'),
-        	formId = $link.data('onForm'),
-        	onId = $link.data('onId'),
-        	data = (typeof formId === "string" ? $('#' + formId).serializeArray() : null);
-        data.push({name: 'id', value: onId});
-        $.ajax({
-        	type: "post",
-        	dataType: 'json',
-        	url: callUrl,
-        	data: data
-    	});
+$('#addserie').click(function(e) {
+  e.preventDefault();
+  var
+  $link = $(e.target),
+  callUrl = $link.attr('href'),
+  formId = $link.data('onForm'),
+  onId = $link.data('onId'),
+  data = (typeof formId === "string" ? $('#' + formId).serializeArray() : null);
+  data.push({name: 'id', value: onId});
+  $.ajax({
+   type: "post",
+   dataType: 'json',
+   url: callUrl,
+   data: data
+ });
 
-	});
+});
 });

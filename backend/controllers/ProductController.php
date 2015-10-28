@@ -104,6 +104,11 @@ class ProductController extends \yii\web\Controller
             'dataProCat' => $dataProCat
         ]);
     }
+    public function actionRemoveSerie($id){
+        $model = TblSeries::findOne($id);
+        $model->delete();
+        print('success');
+    }
     public function actionLinkForm(){
 
         if (Yii::$app->request->isAjax) {

@@ -85,7 +85,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
                     'type' => 'select2',
                     'value'=>function ($data){
                         $dataName = TblProDetail::find()->where(['lang_id' => 1,'pro_id' => $data->product_id])->one();
-                        return 'หน้า '.$dataName['pro_de_name'];
+                        return (empty($dataName['pro_de_name']) ? 'ไม่ระบุ' : 'หน้า '.$dataName['pro_de_name']);
                     },
                     'editableOptions' => [
                         'mode' => 'popup',
@@ -115,6 +115,15 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/serie.
 
 
 				],
+                [
+                 //   'attribute' => 'name',
+                    'format' => 'raw',
+                    'label' => 'Name',
+                    'header' => false,
+                    'value'=>function ($data) {
+                        return '<i class="i-delete"></i>';
+                    }
+                ],
 				//'order'
         		// ...
     		],
