@@ -36,7 +36,7 @@ class TblSeries extends \yii\db\ActiveRecord
     {
         return [
             [['serie_name'], 'required'],
-            [['product_id'], 'integer'],
+            //[['product_id'], 'integer'],
             [['serie_name'], 'string', 'max' => 150]
         ];
     }

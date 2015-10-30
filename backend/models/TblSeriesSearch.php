@@ -23,7 +23,7 @@ class TblSeriesSearch extends TblSeries
     public function rules()
     {
         return [
-            [['webpage_id'], 'integer'],
+            //[['product_id'], 'integer'],
             [['serie_name'], 'string', 'max' => 150]
         ];
     }
@@ -35,10 +35,14 @@ class TblSeriesSearch extends TblSeries
      * @return ActiveDataProvider
      */
     public $pro_cat;
-    public function search($params)
+    public function search($params,$pageRequest,$productID)
     {
         $id = $this->serie_id;
         $query = TblSeries::find();
+        if($pageRequest == 'add'){ // From Product add
+            $query->orWhere(['product_id'=> null]);
+            $query->orWhere(['product_id'=> $productID]);
+        }
         $id=(empty($params['id']) ? '': $params['id']);
         $this->load($params);
         $query->andFilterWhere([

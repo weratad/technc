@@ -85,23 +85,30 @@ class ProductController extends \yii\web\Controller
             ]);
     }
     public function actionSerie($id=null){
+        $pageRequest = Yii::$app->request->get('page');
+        $productID = Yii::$app->request->get('product');
+        $page = 'serie';
         $model = new TblSeries();
         $searchModel = new TblSeriesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$pageRequest,$productID);
 
         $dataTreedate = TreeData::findOne($id);
 
         $dataProCat = TblProCat::find()->joinWith('procat')->where('prodata_id = :id',[':id'=>$id])->all();
 
         $this->layout = 'layout-iframe';
-        return $this->render('serie',[
-            'id' => $id,
-            'model' => $model,
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'dataTreedate' => $dataTreedate,
-            'dataProCat' => $dataProCat
-        ]);
+        if($pageRequest=='add'){ // add = addProduct or edit Product
+             $page = 'serie-add';
+        }
+        return $this->render( $page,
+                [
+                    'id' => $id,
+                    'model' => $model,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    'dataTreedate' => $dataTreedate,
+                    'dataProCat' => $dataProCat
+            ]);
     }
     public function actionRemoveSerie($id){
         $model = TblSeries::findOne($id);
@@ -153,11 +160,29 @@ class ProductController extends \yii\web\Controller
                 }
                 $model->pro_de_name = $valueDB[1]['value'];
                 $model->pro_de_detail = $valueDB[2]['value'];
-                $model->pro_de_detail = $valueDB[2]['value'];
                 $model->pro_id = $product;
                 $model->lang_id = $lang_id;
+
+                $valuelist=Yii::$app->request->post('datalist');
+                foreach($valuelist as $valueData ){
+                    $modeLlist = TblSeries::find()->where('serie_id = :serie_id', [':serie_id' => $valueData['id']])
+->one();
+
+                        if($valueData['value']==1){
+                            $modeLlist->product_id = $product;
+                        }else{
+                            $modeLlist->product_id = NULL;
+                        }
+                        $modeLlist->save();
+
+                }
+                /*$model = User::find($id);
+                $model->name = 'YII';
+                $model->email = 'yii2@framework.com';
+                $model->save();*/
                 if($model->save()){
-                    echo date('d/m/Y H:i:s');
+                    //echo 'success';
+                      echo date('d/m/Y H:i:s');
                 //return $this->redirect([Yii::$app->controller->action->id, 'lang' => $lang_id,'product'=> $product]);
                 }
         }else {  //default

@@ -12,6 +12,7 @@ use zxbodya\yii2\elfinder\TinyMceElFinder;
 \jstreemaster\jstree\jstreeWidget::widget(['id'=>'tree']);
 $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/add.js',  ['depends' => ['yii\web\YiiAsset','backend\assets\JqueryAsset','backend\assets\AngularAsset']]);
 ?>
+<div ng-app="AppAdd" ng-controller="AddController">
 <div class="col-md-9">
   <div class="col-md-12">
     <?php
@@ -35,7 +36,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/add.js
     </div>
     <div class="col-md-3">
      <div>
-      <?= Html::button('<i class="i-disk"></i> บันทึกรายการ',['id'=>'submitForm','class'=>'btn rit-submit btn-default ']) ?>
+      <?= Html::button('<i class="i-disk"></i> บันทึกรายการ',['class'=>'btn rit-submit btn-default submitForm']) ?>
       <p id="last-time">ล่าสุดเมื่อ 12/05/2558</p>
     </div>
     <div class="div-newline">
@@ -57,8 +58,19 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/add.js
          <input type="hidden" name="TblProDetail[catpro]" id="catpro" value="" />
          <!--<button id="getChecked">Get Checked</button>-->
      </div>
+     <div class="div-newline">
+         <label>ระบุซีรี่ย์</label>
+         <div id="iframe-set" style="width:100%;">
+                    <iframe id="iframe-serie" src="<?=Url::toRoute(['serie','page'=>'add','product'=>$productID])?>" frameBorder="0" style="width:100%;"></iframe>
+                </div><!--iframe-set-->
+     </div>
+     <div class="div-newline">
+      <?= Html::button('<i class="i-disk"></i> บันทึกรายการ',['class'=>'btn rit-submit btn-default submitForm']) ?>
+      <p id="last-time">ล่าสุดเมื่อ 12/05/2558</p>
+    </div>
      <?php ActiveForm::end() ?>
    </div>
+</div><!--ng-app AppAdd-->
    <style type="text/css">
     #tree{
       height:200px;
@@ -69,7 +81,8 @@ $this->registerJsFile(Yii::$app->request->baseUrl.'/js/controller/product/add.js
   </style>
 <?php
 $treeid = 'tree';
-$this->registerJs(' $("#'.$treeid.'")
+$this->registerJs(' 
+$("#'.$treeid.'")
   .jstree({
     "core" : {
       "data" : {
@@ -82,7 +95,8 @@ $this->registerJs(' $("#'.$treeid.'")
         "responsive" : false,
         "variant" : "small",
         "stripes" : true
-      }
+      },
+      "multiple":false,
 
     },
     "checkbox" : { "three_state" : false } ,

@@ -65,7 +65,7 @@ AppAsset::register($this);
                     </a>
                     <ul class="dropdown-list">
                         <li>
-                            <a href="">
+                            <a href="<?=Url::toRoute('product/index')?>">
                                 <span>สินค้าทั้งหมด</span>
                             </a>
                         </li>
