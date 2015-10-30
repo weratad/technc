@@ -3,6 +3,10 @@
 namespace backend\controllers;
 use yii;
 use yii\db\Query;
+use yii\web\Response;
+use yii\web\Controller;
+
+use app\models\UploadForm;
 use app\models\TblProDetail;
 use app\models\TblProDetailSearch;
 use app\models\TblProductGroup;
@@ -10,13 +14,19 @@ use app\models\TblProCat;
 use app\models\TblSeries;
 use app\models\TblSeriesSearch;
 use app\models\TreeData;
-use yii\web\Response;
+use app\models\TblProImages;
 use app\components\BaseController;
 use dosamigos\editable\EditableAction;
+
+use common\models\Person;
+use yii\web\UploadedFile;
 class ProductController extends \yii\web\Controller
 {
     public $jsFile;
+
     public function init() {
+        Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/web/uploads/';
+        Yii::$app->params['uploadUrl'] = Yii::$app->urlManager->baseUrl . '/web/uploads/';
         parent::init();
         $this->jsFile = '@app/views/' . $this->id . '/ajax.js';
         // Publish and register the required JS file
@@ -110,6 +120,7 @@ class ProductController extends \yii\web\Controller
                     'dataProCat' => $dataProCat
             ]);
     }
+
     public function actionRemoveSerie($id){
         $model = TblSeries::findOne($id);
         $model->delete();
@@ -186,8 +197,14 @@ class ProductController extends \yii\web\Controller
                 //return $this->redirect([Yii::$app->controller->action->id, 'lang' => $lang_id,'product'=> $product]);
                 }
         }else {  //default
+
+
+
+            $modelImage = TblProImages::find()->where('product_id = :priduct_id', [':priduct_id' => $product])
+->all();
             return $this->render('add',[
                 'model' => $model,
+                'modelImage' => $modelImage,
             'langID' => $lang_id,
             'productID' => $product
             ]);
@@ -198,4 +215,52 @@ class ProductController extends \yii\web\Controller
     {
             return   $this->ProductCp();
     }
+
+    public function actionUpload()
+    {
+        //$model = new Person;
+         //$images = UploadedFile::getInstancesByName('Person[image]');
+ //print_r( Yii::$app->request->post('Person[image]'));
+        // ($model->load(Yii::$app->request->post())
+
+            // process uploaded image file instance
+            //$image = $model->uploadImage();
+            $images = UploadedFile::getInstancesByName('image');
+            foreach ($images as $file){
+                  $FullName = $file->name;
+                  $ext = end((explode(".", $FullName)));
+                  $fileName = Yii::$app->security->generateRandomString().".{$ext}";
+                  $savePath = Yii::$app->params['uploadPath'] . $fileName;
+                   if($file->saveAs($savePath)){
+                        $model = new TblProImages;
+                        $model->pro_image_full = $FullName;
+                        $model->pro_image_name = $fileName;
+                        $model->product_id = Yii::$app->request->post('product_id');
+                        $model->save();
+                   }
+            }
+            //print_r(  $file->name);
+            //if ($model->save()) {
+                // upload only if valid uploaded file instance found
+                //if ($image !== false) {
+                    //$path = Yii::$app->params['uploadPath'] . $fileName;
+                    //$image->saveAs($path);
+               // }
+               // return $this->redirect(['view', 'id'=>$model->id]);
+           echo '55';
+        //}
+        
+        /*return $this->render('create', [
+            'model'=>$model,
+        ]);*/
+    }
+     public function actionRemoveImage($id){
+        if(!is_numeric($id)){
+             $model = TblProImages::find()->where("pro_image_full = :id",["id"=>$id])->one();
+        }else{
+             $model = TblProImages::findOne($id);
+        }
+       
+        $model->delete();
+     }
 }
